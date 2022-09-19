@@ -1,0 +1,27 @@
+version: "3.8"
+
+volumes:
+  apk_builds:
+
+services:
+  server:
+    build: server
+    ports:
+      - "8080:80"
+
+  client_mobile:
+    build: client_mobile
+    - "apk_builds:/apk_builds"
+
+  client_web:
+    build: client_web
+    ports:
+      - "8081:80"
+    volumes:
+      - "apk_builds:/apk_builds:ro"
+    depends_on:
+      server:
+        condition: service_started
+      # wait for apk to be built before starting the webserver (to keep ?)
+      client_mobile:
+        condition: service_completed_successfully

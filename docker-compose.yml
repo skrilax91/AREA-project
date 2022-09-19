@@ -1,6 +1,6 @@
 version: "3.8"
-services:
 
+services:
   db:
     image: mysql
     container_name: db_docker_symfony
@@ -47,20 +47,8 @@ services:
     networks:
       - dev
 
-  client_mobile:
-    build: client_mobile
-    - "apk_builds:/apk_builds"
-
-  client_web:
-    build: client_web
-    ports:
-      - "8081:80"
-    volumes:
-      - "apk_builds:/apk_builds:ro"
-
 networks:
   dev:
 
 volumes:
   db-data:
-  apk_builds:

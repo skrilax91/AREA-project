@@ -9,19 +9,27 @@ security:
         app_user_provider:
             entity:
                 class: App\Entity\User
-                property: authTokens
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        auth:
+            pattern: ^/api/auth/login
+            provider: app_user_provider
+            stateless:  true
+            json_login:
+                check_path: api_auth_login
+
+        api:
+            pattern: ^/api/
+            provider: app_user_provider
+            custom_authenticator: App\Security\TokenAuthenticator
+            stateless:  true
+
         main:
             lazy: true
             provider: app_user_provider
-
-            json_login:
-                # api_login is a route we will create below
-                check_path: api_auth_login
-            custom_authenticator: App\Security\TokenAuthenticator
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -33,7 +41,8 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api/auth/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api, roles: ROLE_USER }
+        - { path: ^/api/auth/register, roles: PUBLIC_ACCESS }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:

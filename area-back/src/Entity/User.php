@@ -32,8 +32,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: AuthToken::class, orphanRemoval: true)]
     private Collection $authTokens;
 
-    public function __construct()
+    public function __construct($email)
     {
+        $this->email = $email;
         $this->authTokens = new ArrayCollection();
     }
 

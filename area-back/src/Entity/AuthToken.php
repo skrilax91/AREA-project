@@ -16,14 +16,14 @@ class AuthToken
 
     #[ORM\ManyToOne(inversedBy: 'authTokens')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $User = null;
+    private ?User $user = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $token = null;
 
     public function __construct(User $user, string $token)
     {
-        $this->User = $user;
+        $this->user = $user;
         $this->token = $token;
     }
 
@@ -34,12 +34,12 @@ class AuthToken
 
     public function getUser(): ?User
     {
-        return $this->User;
+        return $this->user;
     }
 
-    public function setUser(?User $User): self
+    public function setUser(?User $user): self
     {
-        $this->User = $User;
+        $this->user = $user;
 
         return $this;
     }

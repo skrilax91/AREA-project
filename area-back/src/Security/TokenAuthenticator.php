@@ -27,18 +27,18 @@ class TokenAuthenticator extends AbstractAuthenticator implements Authentication
 
     public function supports(Request $request): ?bool
     {
-        return $request->cookies->has('X-AUTH-TOKEN');
+        return $request->headers->has('X-AUTH-TOKEN');
     }
 
     public function authenticate(Request $request): Passport
     {
-        $apiToken = $request->cookies->get('X-AUTH-TOKEN');
+        $apiToken = $request->headers->get('X-AUTH-TOKEN');
         if (null === $apiToken) {
             throw new CustomUserMessageAuthenticationException('No API token provided');
         }
 
         $authToken = $this->em->getRepository(AuthToken::class)->findOneByToken($apiToken);
-        if ($authToken) {
+        if (!$authToken) {
             throw new CustomUserMessageAuthenticationException('Bad Api Token provided');
         }
 

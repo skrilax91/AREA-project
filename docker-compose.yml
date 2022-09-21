@@ -38,6 +38,8 @@ services:
   www:
     build: node-server
     container_name: www_docker_area
+    depends_on:
+      - db
     ports:
       - "3000:3000"
     volumes:

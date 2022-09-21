@@ -89,7 +89,7 @@ class AuthController extends AbstractController
 
         $this->em->remove($authToken);
         $this->em->flush();
-        
+
         return $this->json([
             'message' => "Successfully logged out"
         ]);

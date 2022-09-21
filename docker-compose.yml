@@ -3,7 +3,7 @@ version: "3.8"
 services:
   db:
     image: mysql
-    container_name: db_docker_symfony
+    container_name: db_docker_area
     restart: always
     volumes:
       - db-data:/var/lib/mysql
@@ -14,7 +14,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin
-    container_name: phpmyadmin_docker_symfony
+    container_name: phpmyadmin_docker_area
     restart: always
     depends_on:
       - db
@@ -27,7 +27,7 @@ services:
 
   maildev:
     image: maildev/maildev
-    container_name: maildev_docker_symfony
+    container_name: maildev_docker_area
     command: bin/maildev --web 80 --smtp 25 --hide-extensions STARTTLS
     ports:
       - "8081:80"
@@ -36,14 +36,15 @@ services:
       - dev
 
   www:
-    build: php
-    container_name: www_docker_symfony
+    build: node-server
+    container_name: www_docker_area
     ports:
-      - "8741:80"
+      - "3000:3000"
     volumes:
-      - ./php/vhosts:/etc/apache2/sites-enabled
-      - ./:/var/www
+      - ./node-server:/opt/app/node-server
     restart: always
+    command: npm run start
+    env_file: ./node-server/.env
     networks:
       - dev
 

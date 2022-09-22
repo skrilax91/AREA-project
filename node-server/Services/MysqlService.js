@@ -1,33 +1,27 @@
-var mysql = require('mysql2');
+const { Sequelize } = require('sequelize');
 
 var database;
 
-function handleDisconnect() {
-    database = mysql.createConnection({
+async function handleDisconnect() {
+    var name = process.env.DATABASE_NAME || ""
+    var user = process.env.DATABASE_USER || ""
+    var password = process.env.DATABASE_PASSWORD || ""
+
+    const sequelize = new Sequelize(name, user, password, {
         host: process.env.DATABASE_HOST || "",
-        user: process.env.DATABASE_USER || "",
-        password: process.env.DATABASE_PASSWORD || "",
-        database: process.env.DATABASE_NAME || ""
+        dialect: "mysql"
     });
 
-    database.connect( function(err) {
-        if(err) {
-            console.log('error when connecting to db:', err)
-            setTimeout(handleDisconnect, 2000);
-        }
-    });
-
-    database.on('error', function(err) {
-        console.log('db error', err);
-
-        if(err.code === 'PROTOCOL_CONNECTION_LOST') {
-            handleDisconnect();
-        } else {
-            throw err;
-        }
-    });
-
-    global.database = database
+    try {
+        await sequelize.authenticate();
+        console.log('Connection has been established successfully.');
+        global.database = sequelize
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+        return;
+    }
+    require("../Entities");
+    await global.database.sync({ alter: true });
 }
 
 handleDisconnect();

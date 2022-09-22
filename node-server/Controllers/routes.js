@@ -6,6 +6,7 @@ const { catchErrors } = require('../Services/ErrorHandlerService.js');
 var AuthController = require('./AuthController');
 
 // Homes pages
-router.get( '/', catchErrors( AuthController.index ) );
+router.get( '/api', catchErrors( AuthController.index ) );
+router.post( '/api/auth/register', catchErrors( AuthController.register ) );
 
 module.exports = router;

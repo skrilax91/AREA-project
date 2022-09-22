@@ -7,6 +7,10 @@ class User extends Model
         const salt = await bcrypt.genSalt(10);
         this.password = await bcrypt.hash(password, salt);
     }
+
+    async checkPassword(password) {
+        return await bcrypt.compare(password, this.password);
+    }
 }
 
 User.init({

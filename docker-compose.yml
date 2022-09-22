@@ -45,7 +45,7 @@ services:
     volumes:
       - ./node-server:/opt/app/node-server
     restart: always
-    command: npm run start
+    command: npm run dev
     env_file: ./node-server/.env
     networks:
       - dev

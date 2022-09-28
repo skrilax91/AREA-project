@@ -5,6 +5,15 @@ require('dotenv').config({path: __dirname + '/.env'})
 
 /* Load MYSQL */
 require('./Services/MysqlService');
+const ServiceManager =  require("./Services/ServiceManager");
+const TwitchService = require('./Class/Services/TwitchService');
+
+const tests = async () => {
+    let service = new (ServiceManager.getService("service_twitch"));
+    service.enableTrigger("twitch_follow_trigger", { userid: (await TwitchService.getUserId("devix69_")) });
+}
+
+tests();
 
 // Initilize globals
 global.__basedir = __dirname;
@@ -14,7 +23,6 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var requestIp = require('request-ip');
 var request = require('request');
-
 var server = express();
 
 var http = require('http').createServer( server );

@@ -11,11 +11,28 @@ class User extends Model
     async checkPassword(password) {
         return await bcrypt.compare(password, this.password);
     }
+
+    async getServices() {
+        let services = ServiceManager.getServices();
+        let res = [];
+
+        services.forEach(el => {
+            if (this.getServiceToken(el.getId()))
+                res.push(el);
+        });
+        
+        return res;
+    }
+
+    async getServiceToken(id) {
+        return (this.tokens[id]) ? this.tokens[id] : null;
+    }
 }
 
 User.init({
 
   email: { type: DataTypes.STRING, allowNull: false, unique: true },
+  tokens: { type: DataTypes.JSON },
   password: { type: DataTypes.STRING, allowNull: false},
 
 }, { sequelize: global.database });

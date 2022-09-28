@@ -1,8 +1,9 @@
 const { DataTypes } = require('sequelize');
 
 
-const AuthToken = global.database.define('AuthToken', {
+const AuthToken = database.define('AuthToken', {
   token: DataTypes.STRING,
 });
 
-global.database.models.User.hasMany(AuthToken)
+database.models.User.hasMany(AuthToken)
+AuthToken.belongsTo(database.models.User);

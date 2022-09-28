@@ -10,9 +10,12 @@ module.exports.ApiTokenAuthenticator = () => {
             if (!result) {
                 res.json({ "message": "Bad token provided" }, 401);
                 return;
-            } else {
-                next();
             }
+
+            result.getUser().then(function(res) {
+                req.user = res;
+                next();
+            });
         })
     }
 }

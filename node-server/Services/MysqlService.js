@@ -1,4 +1,5 @@
 const { Sequelize } = require('sequelize');
+const AreaManager = require('./AreaManager');
 
 var database;
 
@@ -22,6 +23,13 @@ async function handleDisconnect() {
     }
     require("../Entities");
     await global.database.sync({ alter: true });
+
+    let areas = await global.database.models.Area.findAll();
+
+    areas.forEach(el => {
+        el.instanciate();
+        AreaManager.addArea(el);
+    });
 }
 
 handleDisconnect();

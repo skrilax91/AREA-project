@@ -12,13 +12,13 @@ class FollowTrigger extends Trigger {
 
         let pattern = FollowTrigger.getParamsPattern();
 
-        pattern.forEach(el => {
-            if (!this.params[el.name])
+        for (let param of pattern) {
+            if (!this.params[param.name])
                 return false;
 
-            if (typeof this.params[el.name] != el.type)
+            if (typeof this.params[param.name] != param.type)
                 return false;
-        });
+        }
 
         return true;
     }
@@ -46,7 +46,7 @@ class FollowTrigger extends Trigger {
     async process() {
         if (!this.paramsValidator()) {
             console.log("Can't process " + FollowTrigger.name + " Trigger, bad params");
-            return false;
+            return null;
         }
 
         const delay = ms => new Promise(resolve => setTimeout(resolve, ms));

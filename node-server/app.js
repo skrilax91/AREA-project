@@ -13,8 +13,6 @@ const tests = async () => {
     service.enableTrigger("twitch_follow_trigger", { userid: (await TwitchService.getUserId("devix69_")) });
 }
 
-tests();
-
 // Initilize globals
 global.__basedir = __dirname;
 
@@ -23,6 +21,8 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var requestIp = require('request-ip');
 var request = require('request');
+const { DatabaseError } = require('sequelize');
+const AreaManager = require('./Services/AreaManager');
 var server = express();
 
 var http = require('http').createServer( server );

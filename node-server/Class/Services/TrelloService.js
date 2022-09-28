@@ -3,11 +3,8 @@ const axios = require('axios');
 const FollowTrigger = require("../Twitch/FollowTrigger");
 
 class TwitchService extends Service {
-    static uid = "service_twitch";
-    static name = "Service Twitch";
-    static clientId = "4zcf5a0fp9bn4di3mdyb6obntnc0af";
-    static clientSecret = "jswb9yjz6uc7hsd7y6kf499owlf76s";
-    static accessToken;
+    static uid = "service_trello";
+    static name = "Service Trello";
 
     static triggerPrototypes = [
         FollowTrigger
@@ -85,7 +82,19 @@ class TwitchService extends Service {
         this.triggers.push(trigger);
         console.log("================TRIGGERS========================")
         console.log(this.triggers);
-        return trigger;
+
+        const loop = async (el) => {
+            while (true) {
+                console.log("Awaiting new follow...");
+                let res = await el.process();
+                res.forEach(el => {
+                    console.log("New follow by " + el.from_name);
+                })
+            }
+        }
+
+        loop(trigger);
+        return true;
     }
 
     static async getAccessToken() {

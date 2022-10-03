@@ -14,7 +14,12 @@ router.post( '/api/auth/register', catchErrors( AuthController.register ) );
 router.post( '/api/auth/login', catchErrors( AuthController.login ) );
 router.post( '/api/auth/logout', ApiTokenAuthenticator(), catchErrors( AuthController.logout ) );
 
+router.get( '/api/auth/googleAuth', catchErrors( AuthController.googleAuth ) );
+
+
 router.get('/api/user/services', ApiTokenAuthenticator(), catchErrors( UserController.getServices ));
+
+
 
 
 module.exports = router;

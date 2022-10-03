@@ -31,7 +31,7 @@ class User extends Model
 
 User.init({
 
-  email: { type: DataTypes.STRING, allowNull: false, unique: true },
+  email: { type: DataTypes.STRING, allowNull: false },
   tokens: { type: DataTypes.JSON },
   password: { type: DataTypes.STRING, allowNull: false},
 

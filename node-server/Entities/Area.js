@@ -11,6 +11,13 @@ class Area extends Model
         for (const el of conf) {
             let service = this.addService(el.uid);
 
+            if (el.actions) {
+                for (const act of el.actions) {
+                    console.log("create action " + act.uid);
+                    await service.enableAction(act.uid, act.params);
+                }
+            }
+
             if (el.triggers) {
                 for (const trig of el.triggers) {
                     console.log("create trigger " + trig.uid);
@@ -28,7 +35,11 @@ class Area extends Model
             if (res == null)
                 break;
             res.forEach(el => {
-                console.log("New follow by " + el.from_name);
+                this.services.forEach(sv => {
+                    sv.actions.forEach(action => {
+                        action.execute(el);
+                    });
+                });
             })
         }
     }

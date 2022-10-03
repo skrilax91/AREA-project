@@ -15,6 +15,8 @@
     "ejs": "^3.1.8",
     "express": "~4.16.1",
     "express-session": "^1.17.3",
+    "googleapis": "^108.0.0",
+    "json-nested-replace": "^1.0.4",
     "morgan": "~1.9.1",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.20",

@@ -79,3 +79,10 @@ module.exports.logout = async (req, res, next) => {
     res.json({'message': "Successfully logged out"});
     return;
 }
+
+module.exports.googleAuth = async (req, res, next) => {
+    console.log(req.body)
+    console.log(req.query)
+
+    res.json({});
+}

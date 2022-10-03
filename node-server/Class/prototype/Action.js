@@ -1,20 +1,39 @@
 class Action {
-    #name;
-    #description;
+	static uid = "";
+	static name = "";
+	static description = "";
+    service;
+	params;
 
-    constructor(name, description = "") {
+    constructor(params = null, service = null) {
         if (this.constructor === Action) {
           throw new TypeError('Abstract class "Action" cannot be instantiated directly');
         }
 
-        this.#name = name;
-        this.#description = description;
+        this.params = params;
+        this.service = service;
     }
 
-    execute(params) {
+	paramsValidator() {
+        return (this.params);
+    }
+
+    static getParamsPattern() {
+        return {};
+    }
+
+	setParams(params) {
+        this.params = params;
+    }
+
+    setParam(index, value = null) {
+        this.params[index] = value;
+    }
+
+    async execute() {
         if (this.constructor === Action) {
             throw new TypeError('you need to implement an execute function');
-          }
+        }
     }
 
 }

@@ -72,7 +72,16 @@ class FollowTrigger extends Trigger {
             news = data.filter(follow => new Date(follow.followed_at) >  timestamp);
         } while (!news.length);
 
-        return news;
+        let res = []
+
+        for (let n of news) {
+            res.push({
+                username: n.from_name,
+                channel: n.to_name
+            });
+        }
+
+        return res;
     }
 }
 

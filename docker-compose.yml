@@ -26,7 +26,7 @@ services:
     depends_on:
       - db
     ports:
-      - 8080:80
+      - 8090:80
     environment:
       PMA_HOST: db
     networks:
@@ -37,18 +37,18 @@ services:
     container_name: maildev_docker_area
     command: bin/maildev --web 80 --smtp 25 --hide-extensions STARTTLS
     ports:
-      - "8081:80"
+      - "8091:80"
     restart: always
     networks:
       - dev
 
-  www:
+  server:
     build: node-server
-    container_name: www_docker_area
+    container_name: server_docker_area
     depends_on:
       - db
     ports:
-      - "3000:3000"
+      - "8080:3000"
     volumes:
       - ./node-server:/opt/app/node-server
     restart: always

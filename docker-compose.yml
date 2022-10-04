@@ -44,8 +44,8 @@ services:
       - "8080:3000"
     volumes:
       - ./node-server:/opt/app/node-server
+      - /opt/app/node-server/node_modules
     restart: always
-    command: npm run dev
     env_file: ./node-server/.env
     networks:
       - dev

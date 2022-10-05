@@ -1,6 +1,13 @@
 version: "3.8"
 
 services:
+  client_mobile:
+    build: client_mobile
+    container_name: client_mobile
+    volumes:
+      - "./client_mobile:/project"
+      - "build:/project/build/app/outputs/flutter-apk"
+
   db:
     image: mysql
     container_name: db_docker_area
@@ -55,3 +62,4 @@ networks:
 
 volumes:
   db-data:
+  build:

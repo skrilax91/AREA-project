@@ -13,6 +13,18 @@ class ServiceManager {
         return res;
     }
 
+    static getServices() {
+        let res = [];
+        ServiceManager.services.forEach(el => {
+            let service = {};
+            service.name = el.uid;
+            service.actions = el.getTriggerPrototypes();
+            service.reactions = el.getActionPrototypes();
+            res.push(service);
+        });
+        return res;
+    }
+
     static createService(sid) {
         let proto = ServiceManager.getService(sid);
 

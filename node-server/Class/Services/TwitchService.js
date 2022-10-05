@@ -34,11 +34,6 @@ class TwitchService extends Service {
         return true;
     }
 
-    static getTriggerPrototype(uid) {
-        let res = TwitchService.triggerPrototypes.find(el => el.uid == uid );
-        return res;
-    }
-
     static async getUserId(name) {
         let headers = {
             "Content-Type": "application/json",

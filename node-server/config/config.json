@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "area_dev",
+    "host": "db_docker_area",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "area_prod",
+    "host": "db_docker_area",
+    "dialect": "mysql"
+  }
+}

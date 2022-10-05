@@ -1,6 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
-if [ "$NODE_ENV" == "prod" ] ; then
+npx sequelize-cli db:create
+npx sequelize-cli db:migrate
+
+if [ "$NODE_ENV" == "production" ] ; then
     npm run start
 else
     npm run dev

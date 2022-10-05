@@ -1,8 +1,10 @@
-module.exports.about = async (req, res, next) => {
-    let host = req.socket.remoteAddress;
-    let current_time = (Date.now() / 1000);
+const ServiceManager = require("../Services/ServiceManager");
 
-    let services = {};
+module.exports.about = async (req, res, next) => {
+    let host = req.ip;
+    let current_time = Math.floor(Date.now() / 1000);
+
+    let services = ServiceManager.getServices();
 
     res.json({
         client: {

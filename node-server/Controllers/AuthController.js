@@ -1,4 +1,5 @@
 var randtoken = require('rand-token');
+const { User, AuthToken } = require("../models");
 
 module.exports.index = async ( req, res, next ) => {
     res.json({ "message": "Welcome to the api"});
@@ -15,7 +16,7 @@ module.exports.register = async ( req, res, next ) => {
         return;
     }
 
-    var user = await database.models.User.findOne({ where: { email: req.body.username } })
+    var user = await User.findOne({ where: { email: req.body.username } })
     
     if (user) {
         res.json({'message': 'Email already exist', 'field': 'username'}, 409);
@@ -27,7 +28,7 @@ module.exports.register = async ( req, res, next ) => {
         return;
     }
 
-    let newUser = await database.models.User.build({ email: req.body.username });
+    let newUser = await User.build({ email: req.body.username });
     await newUser.setPassword(req.body.password);
     await newUser.save();
 
@@ -45,7 +46,7 @@ module.exports.login = async ( req, res, next ) => {
         return;
     }
 
-    var user = await database.models.User.findOne({ where: { email: req.body.username } })
+    var user = await User.findOne({ where: { email: req.body.username } })
     
     if (!user || !(await user.checkPassword(req.body.password))) {
         res.json({'message': 'Bad credentials'}, 401);
@@ -53,7 +54,7 @@ module.exports.login = async ( req, res, next ) => {
     }
 
     let token = randtoken.generate(40);
-    let authToken = await database.models.AuthToken.create({ token, UserId: user.id });
+    let authToken = await AuthToken.create({ token, UserId: user.id });
 
     res.json({
         'token': authToken.token,
@@ -67,7 +68,7 @@ module.exports.login = async ( req, res, next ) => {
 module.exports.logout = async (req, res, next) => {
     let token = req.headers["x-auth-token"];
 
-    let authToken = await database.models.AuthToken.findOne({ where: { token } });
+    let authToken = await AuthToken.findOne({ where: { token } });
 
     if (!authToken) {
         res.json({'message': "Can't find token"}, 404);
@@ -82,10 +83,6 @@ module.exports.logout = async (req, res, next) => {
 
 module.exports.googleAuth = async (req, res, next) => {
     console.log(req.query)
-    let { tokens } = await oauth2Client.getToken(q.code);
-    
-    oauth2Client.setCredentials(tokens);
-
 
     res.json({});
 }

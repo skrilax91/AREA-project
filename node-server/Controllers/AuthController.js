@@ -81,8 +81,11 @@ module.exports.logout = async (req, res, next) => {
 }
 
 module.exports.googleAuth = async (req, res, next) => {
-    console.log(req.body)
     console.log(req.query)
+    let { tokens } = await oauth2Client.getToken(q.code);
+    
+    oauth2Client.setCredentials(tokens);
+
 
     res.json({});
 }

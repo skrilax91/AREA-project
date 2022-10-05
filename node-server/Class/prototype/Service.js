@@ -24,12 +24,34 @@ class Service {
     }
 
     static getTriggerPrototype(uid) {
-        let res = Service.triggerPrototypes.find(el => el.uid == uid );
+        let res = this.triggerPrototypes.find(el => el.uid == uid );
         return res;
     }
 
     static getActionPrototype(uid) {
-        let res = Service.actionPrototypes.find(el => el.uid == uid );
+        let res = this.actionPrototypes.find(el => el.uid == uid );
+        return res;
+    }
+
+    static getTriggerPrototypes() {
+        let res = [];
+        this.triggerPrototypes.forEach(el => {
+            let val = {};
+            val.name = el.uid;
+            val.description = el.description;
+            res.push(val);
+        });
+        return res;
+    }
+
+    static getActionPrototypes() {
+        let res = [];
+        this.actionPrototypes.forEach(el => {
+            let val = {};
+            val.name = el.uid;
+            val.description = el.description;
+            res.push(val);
+        });
         return res;
     }
 

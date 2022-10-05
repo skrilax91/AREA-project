@@ -3,22 +3,6 @@ var bodyPareser = require('body-parser');
 var path = require('path');
 require('dotenv').config({path: __dirname + '/.env'})
 
-/* Load MYSQL */
-require('./Services/MysqlService');
-const ServiceManager =  require("./Services/ServiceManager");
-const TwitchService = require('./Class/Services/TwitchService');
-
-
-let infos = {
-    calcul: "j'ai calculé {calc} entités"
-}
-
-let config = {
-    calc: 1656
-}
-
-console.log(ServiceManager.FormatInfos(config, infos));
-
 // Initilize globals
 global.__basedir = __dirname;
 
@@ -27,6 +11,7 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var requestIp = require('request-ip');
 var request = require('request');
+const AreaManager = require('./Services/AreaManager');
 var server = express();
 
 var http = require('http').createServer( server );
@@ -86,3 +71,6 @@ server.use( ( err, req, res, next ) => {
 http.listen( 3000 );
 
 console.log('Server started')
+
+console.log("Loading areas...")
+AreaManager.loadAreas();

@@ -67,16 +67,6 @@ class CalendarService extends Service {
         return true;
     }
 
-    static getTriggerPrototype(uid) {
-        let res = CalendarService.triggerPrototypes.find(el => el.uid == uid );
-        return res;
-    }
-
-    static getActionPrototype(uid) {
-        let res = CalendarService.actionPrototypes.find(el => el.uid == uid );
-        return res;
-    }
-
     getTrigger(uid) {
         let res = this.triggers.find(el => el.uid == uid );
         return res;

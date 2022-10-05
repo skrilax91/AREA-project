@@ -19,7 +19,8 @@ router.post( '/api/auth/logout', ApiTokenAuthenticator(), catchErrors( AuthContr
 router.get( '/api/auth/googleAuth', catchErrors( AuthController.googleAuth ) );
 router.get('/api/user/services', ApiTokenAuthenticator(), catchErrors( UserController.getServices ));
 
-router.get('/api/services', catchErrors( ServiceController.getService ));
+router.get('/api/services', catchErrors( ServiceController.getServices ));
+router.get('/api/service/:service_uid', ServiceController.getService);
 
 
 router.all('/about.json', catchErrors( about ));

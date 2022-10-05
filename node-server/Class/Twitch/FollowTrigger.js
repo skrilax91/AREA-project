@@ -10,9 +10,12 @@ class FollowTrigger extends Trigger {
         if (!super.paramsValidator())
             return false;
 
-        let pattern = FollowTrigger.getParamsPattern();
+        let pattern = this.constructor.getParamsPattern();
 
         for (let param of pattern) {
+            if (!param.required)
+                continue;
+
             if (!this.params[param.name])
                 return false;
 
@@ -26,19 +29,18 @@ class FollowTrigger extends Trigger {
     static getParamsPattern() {
         return [
             {
+                name: "username",
+                type: "string",
+                description: "The user name of the specified channel",
+                required: true,
+                mutualized: ["userid"]
+            },
+            {
                 name: "userid",
                 type: "string",
-                description: "The user id of the specified channel"
-            },
-            {
-                name: "clientId",
-                type: "string",
-                description: "The twitch app user id"
-            },
-            {
-                name: "accessToken",
-                type: "string",
-                description: "the twitch app access token"
+                description: "The user id of the specified channel",
+                required: true,
+                mutualized: ["username"]
             }
         ];
     }

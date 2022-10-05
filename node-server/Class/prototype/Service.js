@@ -1,6 +1,7 @@
 class Service {
     static uid = "";
     static name = "";
+    static description = "";
     static triggerPrototypes = [];
     static actionPrototypes = [];
     
@@ -43,6 +44,23 @@ class Service {
         });
         return res;
     }
+
+    static getJsonTriggers() {
+        let res = [];
+        this.triggerPrototypes.forEach(el => {
+            res.push(el.getJsonInfos());
+        });
+        return res;
+    }
+
+    static getJsonActions() {
+        let res = [];
+        this.actionPrototypes.forEach(el => {
+            res.push(el.getJsonInfos());
+        });
+        return res;
+    }
+
 
     static getActionPrototypes() {
         let res = [];

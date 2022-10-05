@@ -17,8 +17,22 @@ class Trigger {
         return (this.params);
     }
 
+    static getJsonInfos() {
+        return {
+            uid: this.uid,
+            name: this.name,
+            description: this.description,
+            params: this.getParamsPattern(),
+            returns: this.getReturnsPattern()
+        };
+    }
+
+    static getReturnsPattern() {
+        return [];
+    }
+
     static getParamsPattern() {
-        return {};
+        return [];
     }
 
     setParams(params) {

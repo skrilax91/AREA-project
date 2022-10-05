@@ -13,7 +13,7 @@ class ServiceManager {
         return res;
     }
 
-    static getServices() {
+    static getAboutServices() {
         let res = [];
         ServiceManager.services.forEach(el => {
             let service = {};

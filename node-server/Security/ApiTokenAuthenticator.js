@@ -1,3 +1,5 @@
+const { AuthToken } = require("../models");
+
 module.exports.ApiTokenAuthenticator = () => {
     return function( req, res, next ) {
         let token = req.headers["x-auth-token"];
@@ -6,7 +8,7 @@ module.exports.ApiTokenAuthenticator = () => {
             return;
         }
 
-        database.models.AuthToken.findOne({ where: { token } }).then((result) => {
+        AuthToken.findOne({ where: { token } }).then((result) => {
             if (!result) {
                 res.json({ "message": "Bad token provided" }, 401);
                 return;

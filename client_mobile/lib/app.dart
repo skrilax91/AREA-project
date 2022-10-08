@@ -3,6 +3,7 @@ import 'package:user_repository/user_repository.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:area/authentication/authentication.dart';
+import 'package:area/splash/splash.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -78,7 +79,7 @@ class _AppViewState extends State<AppView> {
                     child: child,
                 );
             },
-            // onGenerateRoute: (_) => Splash.route(),
+            onGenerateRoute: (_) => SplashPage.route(),
         );
     }
 }

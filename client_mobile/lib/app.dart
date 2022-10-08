@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:user_repository/user_repository.dart';
 import 'package:authentication_repository/authentication_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:area/authentication/authentication.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -14,19 +16,71 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return RepositoryProvider.value(
+        value: authenticationRepository,
+        child: BlocProvider(
+            create: (_) => AuthenticationBloc(
+                authenticationRepository: authenticationRepository,
+                userRepository: userRepository,
+            ),
+            child: const AppView(),
+        ),
     );
   }
+}
+
+class AppView extends StatefulWidget {
+    const AppView({super.key});
+
+    @override
+    State<AppView> createState() => _AppViewState();
+}
+
+class _AppViewState extends State<AppView> {
+    final _navigatorKey = GlobalKey<NavigatorState>();
+
+    NavigatorState get _navigator => _navigatorKey.currentState!;
+
+    @override
+    Widget build(BuildContext context) {
+        return MaterialApp(
+            navigatorKey: _navigatorKey,
+            theme: ThemeData(
+                useMaterial3: true,
+            ),
+            darkTheme: ThemeData(
+                useMaterial3: true,
+            ),
+            builder: (context, child) {
+                return BlocListener<AuthenticationBloc, AuthenticationState>(
+                    listener: (context, state) {
+                        switch (state.status) {
+                            /* Todo : Implement Home Page
+                            case AuthenticationStatus.authenticated:
+                                _navigator.pushAndRemoveUntil<void>(
+                                    HomePage.route(),
+                                    (route) => false,
+                                );
+                                break;
+                            */
+                            /* Todo : Implement Login Page
+                            case AuthenticationStatus.unauthenticated:
+                                _navigator.pushAndRemoveUntil(
+                                    LoginPage.route(),
+                                    (route) => false,
+                                );
+                                break;
+                            */
+                            default:
+                                break;
+                        }
+                    },
+                    child: child,
+                );
+            },
+            // onGenerateRoute: (_) => Splash.route(),
+        );
+    }
 }
 
 class MyHomePage extends StatefulWidget {

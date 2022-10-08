@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:user_repository/user_repository.dart';
+import 'package:authentication_repository/authentication_repository.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({
+      super.key,
+      required this.authenticationRepository,
+      required this.userRepository,
+  });
+
+    final AuthenticationRepository authenticationRepository;
+    final UserRepository userRepository;
 
   @override
   Widget build(BuildContext context) {

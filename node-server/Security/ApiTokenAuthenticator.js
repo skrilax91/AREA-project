@@ -14,8 +14,13 @@ module.exports.ApiTokenAuthenticator = () => {
                 return;
             }
 
-            result.getUser().then(function(res) {
-                req.user = res;
+            result.getUser().then(function(user) {
+                if (!user) {
+                    res.status(500).json({ "message": "An error has occured with your token, contact an administrator", "error_code": "UNIDB8101733" });
+                    return;
+                }
+                
+                req.user = user;
                 next();
             });
         })

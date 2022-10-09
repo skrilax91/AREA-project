@@ -46,7 +46,7 @@ class _UsernameInput extends StatelessWidget {
                     onChanged: (username) =>
                         context.read<LoginBloc>().add(LoginUsernameChanged(username)),
                     decoration: InputDecoration(
-                        labelText: 'username',
+                        labelText: 'Username',
                         errorText: state.username.invalid ? 'Invalid Username' : null,
                     ),
                 );
@@ -67,7 +67,7 @@ class _PasswordInput extends StatelessWidget {
                         context.read<LoginBloc>().add(LoginPasswordChanged(password)),
                     obscureText: true,
                     decoration: InputDecoration(
-                        labelText: 'password',
+                        labelText: 'Password',
                         errorText: state.password.invalid ? 'Invalid password' : null,
                     ),
                 );

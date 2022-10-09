@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:area/authentication/authentication.dart';
 import 'package:area/splash/splash.dart';
 import 'package:area/login/login.dart';
+import 'package:area/profile/profile.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -57,14 +58,12 @@ class _AppViewState extends State<AppView> {
                 return BlocListener<AuthenticationBloc, AuthenticationState>(
                     listener: (context, state) {
                         switch (state.status) {
-                            /* Todo : Implement Home Page
                             case AuthenticationStatus.authenticated:
                                 _navigator.pushAndRemoveUntil<void>(
-                                    HomePage.route(),
+                                    ProfilePage.route(),
                                     (route) => false,
                                 );
                                 break;
-                            */
                             case AuthenticationStatus.unauthenticated:
                                 _navigator.pushAndRemoveUntil(
                                     LoginPage.route(),

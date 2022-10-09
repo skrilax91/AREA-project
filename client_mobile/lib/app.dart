@@ -4,6 +4,7 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:area/authentication/authentication.dart';
 import 'package:area/splash/splash.dart';
+import 'package:area/login/login.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -64,14 +65,12 @@ class _AppViewState extends State<AppView> {
                                 );
                                 break;
                             */
-                            /* Todo : Implement Login Page
                             case AuthenticationStatus.unauthenticated:
                                 _navigator.pushAndRemoveUntil(
                                     LoginPage.route(),
                                     (route) => false,
                                 );
                                 break;
-                            */
                             default:
                                 break;
                         }

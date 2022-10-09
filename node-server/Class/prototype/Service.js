@@ -16,6 +16,14 @@ class Service {
         this.actions = [];
     }
 
+
+    async destructor() {
+        for (let trigger of this.triggers) {
+            await this.disableTrigger(trigger)
+        }
+        delete this;
+    }
+
     paramsValidator() {
         return (this.params);
     }
@@ -86,6 +94,14 @@ class Service {
     async enableTrigger(uid, params = {}) {}
 
     async enableAction(uid, params = {}) {}
+
+    async disableTrigger(trigger) {
+        if (!trigger)
+            return false;
+
+        trigger.enabled = false
+        return true;
+    }
 
 }
 

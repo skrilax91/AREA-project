@@ -63,8 +63,7 @@ server.use( ( err, req, res, next ) => {
         console.log( err )
     }
 
-    res.status( err.status || 500 )
-    res.render( 'error' )
+    res.status( err.status || 500 ).json(res.locals.error);
 })
 
 // https.listen( 443 );
@@ -73,4 +72,4 @@ http.listen( 3000 );
 console.log('Server started')
 
 console.log("Loading areas...")
-AreaManager.loadAreas();
+AreaManager.instanciateAreas();

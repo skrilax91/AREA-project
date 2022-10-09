@@ -6,26 +6,6 @@ class FollowTrigger extends Trigger {
     static name = "New Follow";
     static description = "Check for new follow on the provided channel";
 
-    paramsValidator() {
-        if (!super.paramsValidator())
-            return false;
-
-        let pattern = this.constructor.getParamsPattern();
-
-        for (let param of pattern) {
-            if (!param.required)
-                continue;
-
-            if (!this.params[param.name])
-                return false;
-
-            if (typeof this.params[param.name] != param.type)
-                return false;
-        }
-
-        return true;
-    }
-
     static getParamsPattern() {
         return [
             {
@@ -45,8 +25,23 @@ class FollowTrigger extends Trigger {
         ];
     }
 
+    static getReturnsPattern() {
+        return [
+            {
+                name: "username",
+                type: "string",
+                description: "The user name of the follower",
+            },
+            {
+                name: "channel",
+                type: "string",
+                description: "The name of the channel",
+            }
+        ];
+    }
+
     async process() {
-        if (!this.paramsValidator()) {
+        if (!this.constructor.paramsValidator(this.params)) {
             console.log("Can't process " + FollowTrigger.name + " Trigger, bad params");
             return null;
         }
@@ -61,6 +56,9 @@ class FollowTrigger extends Trigger {
         let timestamp = new Date();
 
         do {
+            if (!this.enabled)
+                return null;
+
             await delay(10000);
             let data = await axios.get("https://api.twitch.tv/helix/users/follows?to_id="+this.params.userid, { headers: headers }).then(res => {
                 return res.data.data;

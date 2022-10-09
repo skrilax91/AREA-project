@@ -1,7 +1,7 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+const bcrypt = require('bcrypt');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     async setPassword(password) {
@@ -23,6 +23,15 @@ module.exports = (sequelize, DataTypes) => {
       });
       
       return res;
+    }
+
+    async getAreaById(id) {
+      let areaList = await this.getAreas({ where: { id } });
+
+      if (!areaList.length)
+          return null;
+
+      return areaList[0];
     }
 
     async getServiceToken(id) {

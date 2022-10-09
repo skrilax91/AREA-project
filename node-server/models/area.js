@@ -6,8 +6,13 @@ module.exports = (sequelize, DataTypes) => {
   class Area extends Model {
     
     services = [];
+    loaded = false;
 
-    async instanciate() {
+    async load() {
+      await this.reload();
+      if (this.active)
+        return;
+
       let conf = this.config.services;
 
       for (const el of conf) {
@@ -28,6 +33,20 @@ module.exports = (sequelize, DataTypes) => {
           }
         }
       }
+      await this.update({ active: true });
+    }
+
+    async unload() {
+      await this.reload();
+      if (!this.active)
+        return;
+
+      for (let service of this.services) {
+        await service.destructor();
+      }
+
+      this.services = [];
+      await this.update({ active: false });
     }
 
     async triggerLoop(trigger) {

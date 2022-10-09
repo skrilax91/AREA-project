@@ -54,7 +54,7 @@ module.exports.login = async ( req, res, next ) => {
     }
 
     let token = randtoken.generate(40);
-    let authToken = await AuthToken.create({ token, UserId: user.id });
+    let authToken = await AuthToken.create({ token, userId: user.id });
 
     res.json({
         'token': authToken.token,

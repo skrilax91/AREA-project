@@ -1,6 +1,7 @@
 class Service {
     static uid = "";
     static name = "";
+    static description = "";
     static triggerPrototypes = [];
     static actionPrototypes = [];
     
@@ -13,6 +14,14 @@ class Service {
         this.params = params;
         this.triggers = [];
         this.actions = [];
+    }
+
+
+    async destructor() {
+        for (let trigger of this.triggers) {
+            await this.disableTrigger(trigger)
+        }
+        delete this;
     }
 
     paramsValidator() {
@@ -44,6 +53,23 @@ class Service {
         return res;
     }
 
+    static getJsonTriggers() {
+        let res = [];
+        this.triggerPrototypes.forEach(el => {
+            res.push(el.getJsonInfos());
+        });
+        return res;
+    }
+
+    static getJsonActions() {
+        let res = [];
+        this.actionPrototypes.forEach(el => {
+            res.push(el.getJsonInfos());
+        });
+        return res;
+    }
+
+
     static getActionPrototypes() {
         let res = [];
         this.actionPrototypes.forEach(el => {
@@ -68,6 +94,14 @@ class Service {
     async enableTrigger(uid, params = {}) {}
 
     async enableAction(uid, params = {}) {}
+
+    async disableTrigger(trigger) {
+        if (!trigger)
+            return false;
+
+        trigger.enabled = false
+        return true;
+    }
 
 }
 

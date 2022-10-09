@@ -18,8 +18,17 @@ class Action {
         return (this.params);
     }
 
+    static getJsonInfos() {
+        return {
+            uid: this.uid,
+            name: this.name,
+            description: this.description,
+            params: this.getParamsPattern()
+        };
+    }
+
     static getParamsPattern() {
-        return {};
+        return [];
     }
 
 	setParams(params) {

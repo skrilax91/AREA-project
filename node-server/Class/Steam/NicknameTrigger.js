@@ -103,6 +103,7 @@ class NicknameTrigger extends Trigger {
 
         console.log("Name changed !")
         data.old = nickname;
+        data.avatar_medium = data.avatar.medium;
         console.log(data);
         return [data];
     }

@@ -3,6 +3,7 @@ const axios = require('axios');
 const SteamAPI = require('steamapi');
 const AchievementTrigger = require("../Steam/AchievementTrigger");
 const FriendsTrigger = require("../Steam/FriendsTrigger");
+const NicknameTrigger = require("../Steam/NicknameTrigger");
 const config = require('../../config/authConfig.json').steam;
 
 
@@ -12,7 +13,8 @@ class SteamService extends Service {
 
     static triggerPrototypes = [
         AchievementTrigger,
-        FriendsTrigger
+        FriendsTrigger,
+        NicknameTrigger
     ];
     static actionPrototypes = [];
 

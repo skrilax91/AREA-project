@@ -88,7 +88,8 @@ class NicknameTrigger extends Trigger {
             if (!this.enabled)
                 return null;
 
-            await delay(30000);
+            if (nickname)
+                await delay(15000);
             
             data = await this.service.steamAPI.getUserSummary(this.params.userid);
 

@@ -1,6 +1,7 @@
 const Service = require("../prototype/Service");
 const axios = require('axios');
 const MessageAction = require("../Discord/MessageAction");
+const EmbedMessageAction = require("../Discord/EmbedMessageAction");
 
 class DiscordService extends Service {
     static uid = "service_discord";
@@ -8,7 +9,8 @@ class DiscordService extends Service {
 
     static triggerPrototypes = [];
     static actionPrototypes = [
-        MessageAction
+        MessageAction,
+        EmbedMessageAction
     ];
 
     paramsValidator() {

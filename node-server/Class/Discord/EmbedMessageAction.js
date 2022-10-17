@@ -1,11 +1,11 @@
 const Action = require("../prototype/Action");
-const { Webhook } = require('discord-webhook-node');
+const { Webhook, MessageBuilder } = require('discord-webhook-node');
 const jnestedReplace = require('json-nested-replace');
 
-class MessageAction extends Action {
-    static uid = "discord_message_action";
-	static name = "Send message";
-	static description = "Send a message via a webhook";
+class EmbedMessageAction extends Action {
+    static uid = "discord_embedmessage_action";
+	static name = "Send Embed message";
+	static description = "Send an embed message via a webhook";
 
     constructor(params = null, service = null) {
         super(params, service);
@@ -40,11 +40,6 @@ class MessageAction extends Action {
                 name: "author",
                 type: "string",
                 description: "The message author"
-            },
-            {
-                name: "message",
-                type: "string",
-                description: "The message of... message"
             }
         ];
     }
@@ -55,17 +50,41 @@ class MessageAction extends Action {
             return null;
         }
 
-        let infos = JSON.parse(JSON.stringify(this.params));
+        let infos = this.params;
 
         Object.keys(config).forEach(key => {
             if (config[key])
                 infos = jnestedReplace(infos, "{" + key + "}", config[key], ["inline"]);
         });
 
-        this.hook.setUsername(infos.author);
-        this.hook.setAvatar(infos.avatar);
-        this.hook.send(infos.message);
+        const embed = new MessageBuilder();
+
+        if (this.params.title)
+            embed.setTitle(infos.title);
+        if (this.params.author)
+            embed.setAuthor(infos.author, infos.avatar);
+        if (this.params.url)
+            embed.setURL(infos.url);
+        if (this.params.color)
+            embed.setColor(infos.color);
+        if (this.params.thumbnail)
+            embed.setThumbnail(infos.thumbnail);
+        if (this.params.description)
+            embed.setDescription(infos.description);
+        if (this.params.image)
+            embed.setImage(infos.image);
+        if (this.params.footer)
+            embed.setFooter(infos.footer, infos.avatar);
+        
+        if (this.params.fields) {
+            infos.fields.forEach(el => {
+                embed.addField(el.title, el.message, el.inline)
+            });
+        }
+
+        embed.setTimestamp();
+        this.hook.send(embed);
     }
 }
 
-module.exports = MessageAction;
+module.exports = EmbedMessageAction;

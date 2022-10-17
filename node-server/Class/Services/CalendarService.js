@@ -3,12 +3,13 @@ const axios = require('axios');
 const EventAction = require("../Calendar/EventAction");
 const {google} = require('googleapis');
 const GoogleStrategy = require("../Strategies/GoogleStrategy");
+const config = require('../../config/authConfig.json').google;
 
 
 class CalendarService extends Service {
     static uid = "service_calendar";
     static name = "Service Google Calendar";
-    static strategy = GoogleStrategy
+    static strategy = GoogleStrategy;
 
     static triggerPrototypes = [];
     static actionPrototypes = [
@@ -21,7 +22,7 @@ class CalendarService extends Service {
 
     constructor() {
         super();
-        this.oauth2Client = strategy.getAuthenticator();
+        this.oauth2Client = new this.constructor.strategy(config, 0);
 
         this.tokens = {
             access_token: 'ya29.a0Aa4xrXNRRGHPGpXxm2Yzx1a8pLqeFlS8ktv0Ksb3OkwDBeFKLE4PM9M_f87gUr2rIu_E1o2HAqoxn-WV0FGygGVc5S0fex6JRvsTB1YDhzXM5XXpAiY2LVV5BmTDuRcu8ZuagJIvs1teFwKoZni-QuAhgLhzaCgYKATASARASFQEjDvL9ULPVv_Mg1w5HpRwgojGs4w0163',
@@ -31,7 +32,7 @@ class CalendarService extends Service {
             expiry_date: 1664811359863
         };
         
-        this.oauth2Client.setCredentials(this.tokens);
+        this.oauth2Client.getAuthenticator().setCredentials(this.tokens);
         //let url = this.getAuthUrl();
         //console.log("url: " + url);
         //this.getAccessToken();

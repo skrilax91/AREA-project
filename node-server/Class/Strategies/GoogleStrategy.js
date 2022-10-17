@@ -7,11 +7,11 @@ class GoogleStrategy extends Strategy {
     auth;
     scopes;
 
-    constructor(configs) {
+    constructor(configs, userId) {
+        super();
         this.config = configs
         this.auth = new google.auth.OAuth2(this.config.clientId, this.config.secret, this.config.callback);
         this.scopes = [];
-        return this.auth;
     }
 
     getAuthUrl() {

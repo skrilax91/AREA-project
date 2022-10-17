@@ -4,6 +4,8 @@ const SteamAPI = require('steamapi');
 const AchievementTrigger = require("../Steam/AchievementTrigger");
 const FriendsTrigger = require("../Steam/FriendsTrigger");
 const NicknameTrigger = require("../Steam/NicknameTrigger");
+const SampleTrigger = require("../Steam/SampleTrigger");
+const LevelTrigger = require("../Steam/LevelTrigger");
 const config = require('../../config/authConfig.json').steam;
 
 
@@ -14,7 +16,9 @@ class SteamService extends Service {
     static triggerPrototypes = [
         AchievementTrigger,
         FriendsTrigger,
-        NicknameTrigger
+        NicknameTrigger,
+        SampleTrigger,
+        LevelTrigger
     ];
     static actionPrototypes = [];
 

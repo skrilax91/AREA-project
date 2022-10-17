@@ -1,10 +1,10 @@
 const Trigger = require("../prototype/Trigger");
 const axios = require('axios');
 
-class AchievementTrigger extends Trigger {
-    static uid = "steam_achievement_trigger";
-    static name = "New Achievement";
-    static description = "Check for new achievement of a player on a game";
+class FriendsTrigger extends Trigger {
+    static uid = "steam_friends_trigger";
+    static name = "New Friends";
+    static description = "Check for new friends on an account";
 
     constructor(params = null, service = null) {
         super(params, service);
@@ -31,12 +31,6 @@ class AchievementTrigger extends Trigger {
                 description: "The user id of the specified steam account",
                 required: true,
                 mutualized: ["username"]
-            },
-            {
-                name: "gameid",
-                type: "string",
-                description: "The id of the game",
-                required: true
             }
         ];
     }
@@ -44,24 +38,39 @@ class AchievementTrigger extends Trigger {
     static getReturnsPattern() {
         return [
             {
-                name: "api",
-                type: "string",
-                description: "The api identifier of the achievement",
+                name: "avatar",
+                type: "json",
+                description: "return the small | medium | large avatar",
             },
             {
-                name: "name",
+                name: "steamID",
                 type: "string",
-                description: "The name of the achievement",
+                description: "The steamID of the new friend",
             },
             {
-                name: "description",
+                name: "url",
                 type: "string",
-                description: "The description of the achievement",
+                description: "The url of the profile",
             },
             {
-                name: "unlockTime",
+                name: "created",
                 type: "string",
-                description: "The unix timestamp of the unlock",
+                description: "The unix timestamp of the creation of the account",
+            },
+            {
+                name: "lastLogOff",
+                type: "string",
+                description: "The unix timestamp of the last log off of the account",
+            },
+            {
+                name: "nickname",
+                type: "string",
+                description: "The nikname of the account",
+            },
+            {
+                name: "realName",
+                type: "string",
+                description: "The real name of the account",
             }
         ];
     }
@@ -81,17 +90,25 @@ class AchievementTrigger extends Trigger {
 
             await delay(60000);
             
-            let data = await this.service.steamAPI.getUserAchievements(this.params.userid, this.params.gameid)
+            let data = await this.service.steamAPI.getUserFriends(this.params.userid)
 
             if (!data)
                 continue;
-            news = data.achievements.filter(achi => new Date(achi.unlockTime * 1000) >  timestamp && achi.achieved);
+            news = data.filter(friend => new Date(friend.friendSince * 1000) >  timestamp);
         } while (!news.length);
 
-        console.log("new achievements !")
-        console.log(news);
-        return news;
+        console.log("new Friends !")
+        let res = [];
+
+        for (let newres of news) {
+            let user = await this.service.steamAPI.getUserSummary(newres.steamID);
+            user.friendSince = newres.friendSince;
+            res.push(user);
+        }
+
+        console.log(res);
+        return res;
     }
 }
 
-module.exports = AchievementTrigger;
+module.exports = FriendsTrigger;

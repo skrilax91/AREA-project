@@ -73,7 +73,8 @@ class EventAction extends Action {
         let infos = this.params;
 
         Object.keys(config).forEach(key => {
-            infos = jnestedReplace(infos, "{" + key + "}", config[key]);
+            if (config[key])
+                infos = jnestedReplace(infos, "{" + key + "}", config[key]);
         });
 
         const event = {

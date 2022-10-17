@@ -9,7 +9,7 @@ class Trigger {
         if (this.constructor === Trigger) {
           throw new TypeError('Abstract class "Action" cannot be instantiated directly');
         }
-        
+
         this.enabled = true;
         this.params = params;
         this.service = service;

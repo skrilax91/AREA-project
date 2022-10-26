@@ -1,0 +1,79 @@
+body {
+    overflow: hidden;
+    background-color: #222;;
+}
+
+header {
+    position: relative;
+    z-index: 2;
+}
+
+header #register {
+    color: #222!important;
+    background-color: white;
+}
+
+header h1, header li, header a{
+    color: white !important;
+}
+
+section {
+    overflow: auto;
+    max-height: 90%;
+}
+
+.home-content {
+    position: relative;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 75em;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+#content-link {
+    border-radius: 5rem;
+    background-color: #fff;
+    color: #222;
+    font-size: 1.8rem;
+    padding: 1.6rem 4.4rem;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+#content-link a {
+    text-decoration: none;
+    color: #222;
+}
+
+.home-content h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 4.44rem;
+}
+
+.home-content p {
+    text-shadow: 0 0 10px rgba(34,34,34,.6),0 0 10px rgba(34,34,34,.6),0 0 10px rgba(34,34,34,.6);
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.7rem;
+}
+
+.bg-circle {
+    background-image: url('https://web-assets.ifttt.com/packs/media/prosumer/svg--home--circle-8e9b206299f7a3ea3488.svg');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 124%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 1em;
+    width: 100%;
+    color: white;
+    fill: white;
+}

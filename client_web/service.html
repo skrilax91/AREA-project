@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Services AREA</title>
+  <link rel="stylesheet" href="./css/loginRegister.css">
+  <link rel="stylesheet" href="./css/global.css">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./js/login.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1><a href="./home.html">AREA</a></h1>
+      
+      <ul>
+        <li id="login"><a href="./settings.html">Settings</a></li>
+        <li><a id="register" href="./create.html">Create</a></li>
+      </ul>
+    </header>
+    <section>
+      <h1>Choose profile</h1>
+      <form>
+        <div>
+            <input type="checkbox" id="service-twitch"><label for="service-twitch">Twitch</label>
+        </div>
+        <div>
+            <input type="checkbox" id="service-ggcalendar"><label for="service-ggcalendar">Google Calendar</label>
+        </div>
+        <div>
+            <input type="checkbox" id="service-api"><label for="service-api">API</label>
+        </div>
+        <div>
+            <input type="checkbox" id="service-twitter"><label for="service-twitter">Twitter</label>
+        </div>
+        <div>
+            <input type="checkbox" id="service-discord"><label for="service-discord">Discord</label>
+        </div>
+        <div>
+            <input type="checkbox" id="service-trello"><label for="service-trello">Trello</label>
+        </div>
+        <button type="submit">Set Profile</button>
+      </form>
+    </section>
+  </div>
+</body>
+</html>

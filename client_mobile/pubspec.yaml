@@ -7,16 +7,13 @@ version: 1.0.0+1
 
 environment:
   sdk: '>=2.18.2 <3.0.0'
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  user_repository:
-    path: packages/user_repository
-  authentication_repository:
-    path: packages/authentication_repository
   cupertino_icons: ^1.0.2
-  flutter_bloc: ^8.1.1
+  flutter_riverpod: ^2.0.2
   formz: ^0.4.1
 
 dev_dependencies:

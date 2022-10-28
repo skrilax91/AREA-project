@@ -56,7 +56,7 @@ ENV PATH="${ANDROID_TOOLS_ROOT}/cmdline-tools/latest/bin:${PATH}"
 # Install Flutter
 ENV FLUTTER_HOME="/opt/flutter"
 
-ENV FLUTTER_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.3.3-stable.tar.xz"
+ENV FLUTTER_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.3.5-stable.tar.xz"
 RUN mkdir -p "${FLUTTER_HOME}"
 ENV FLUTTER_ARCHIVE="${FLUTTER_HOME}/archive"
 RUN wget --progress=dot:giga "${FLUTTER_URL}" -O "${FLUTTER_ARCHIVE}"

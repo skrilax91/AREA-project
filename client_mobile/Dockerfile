@@ -46,7 +46,7 @@ RUN yes "y" | "${ANDROID_TOOLS_ROOT}/cmdline-tools/latest/bin/sdkmanager" "tools
 RUN yes "y" | "${ANDROID_TOOLS_ROOT}/cmdline-tools/latest/bin/sdkmanager" "platform-tools" > /dev/null
 RUN yes "y" | "${ANDROID_TOOLS_ROOT}/cmdline-tools/latest/bin/sdkmanager" "patcher;v4" > /dev/null
 RUN yes "y" | "${ANDROID_TOOLS_ROOT}/cmdline-tools/latest/bin/sdkmanager" "build-tools;30.0.3" > /dev/null
-RUN yes "y" | "${ANDROID_TOOLS_ROOT}/cmdline-tools/latest/bin/sdkmanager" "platforms;android-31" > /dev/null
+RUN yes "y" | "${ANDROID_TOOLS_ROOT}/cmdline-tools/latest/bin/sdkmanager" "platforms;android-33" > /dev/null
 
 RUN rm "${ANDROID_SDK_ARCHIVE}"
 

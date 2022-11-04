@@ -1,0 +1,10 @@
+{
+    "google": {
+        "clientId": "536623300813-8bc3oho8fcrkiu0hsqi6n3ml21fh6v61.apps.googleusercontent.com",
+        "secret": "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",
+        "callback": "http://127.0.0.1:8080/callback"
+    },
+    "steam": {
+        "apikey": "04F4E83F520076B1D0B4C1167F785F57"
+    }
+}

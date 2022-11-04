@@ -2,31 +2,27 @@ const Service = require("../prototype/Service");
 const axios = require('axios');
 const EventAction = require("../Calendar/EventAction");
 const {google} = require('googleapis');
+const GoogleStrategy = require("../Strategies/GoogleStrategy");
+const config = require('../../config/authConfig.json').google;
 
 
 class CalendarService extends Service {
     static uid = "service_calendar";
     static name = "Service Google Calendar";
+    static strategy = GoogleStrategy;
 
     static triggerPrototypes = [];
     static actionPrototypes = [
         EventAction
     ];
 
+    static scope = [
+        'https://www.googleapis.com/auth/calendar'
+    ];
+
     constructor() {
         super();
-        this.oauth2Client = new google.auth.OAuth2(
-            "536623300813-8bc3oho8fcrkiu0hsqi6n3ml21fh6v61.apps.googleusercontent.com",
-            "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",
-            "http://127.0.0.1:3000/api/auth/googleAuth"
-        );
-          
-          // Access scopes for read-only Drive activity.
-        this.scopes = [
-            'https://www.googleapis.com/auth/calendar'
-        ];
-
-        this.code = "4/0ARtbsJowoGxcF2YUBIvIhbhGIcvu7zaVYnBAW2R_7PmdJq2mz8Vkf2nA3AxTO5BbpUqmwg"
+        this.oauth2Client = new this.constructor.strategy(config, 0);
 
         this.tokens = {
             access_token: 'ya29.a0Aa4xrXNRRGHPGpXxm2Yzx1a8pLqeFlS8ktv0Ksb3OkwDBeFKLE4PM9M_f87gUr2rIu_E1o2HAqoxn-WV0FGygGVc5S0fex6JRvsTB1YDhzXM5XXpAiY2LVV5BmTDuRcu8ZuagJIvs1teFwKoZni-QuAhgLhzaCgYKATASARASFQEjDvL9ULPVv_Mg1w5HpRwgojGs4w0163',
@@ -36,18 +32,10 @@ class CalendarService extends Service {
             expiry_date: 1664811359863
         };
         
-        this.oauth2Client.setCredentials(this.tokens);
+        this.oauth2Client.getAuthenticator().setCredentials(this.tokens);
         //let url = this.getAuthUrl();
         //console.log("url: " + url);
         //this.getAccessToken();
-    }
-
-    getAuthUrl() {
-        return this.oauth2Client.generateAuthUrl({
-            access_type: 'offline',
-            scope: this.scopes,
-            include_granted_scopes: false
-        });
     }
 
     paramsValidator() {

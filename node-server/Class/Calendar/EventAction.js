@@ -63,7 +63,7 @@ class EventAction extends Action {
     }
 
     async execute(config) {
-        const calendar = google.calendar({version: 'v3', oauth2Client: this.service.oauth2Client});
+        const calendar = google.calendar({version: 'v3', oauth2Client: this.service.oauth2Client.getAuthenticator()});
 
         if (!this.paramsValidator()) {
             console.log("Can't execute " + EventAction.name + " Action, bad params");
@@ -73,7 +73,8 @@ class EventAction extends Action {
         let infos = this.params;
 
         Object.keys(config).forEach(key => {
-            infos = jnestedReplace(infos, "{" + key + "}", config[key]);
+            if (config[key])
+                infos = jnestedReplace(infos, "{" + key + "}", config[key]);
         });
 
         const event = {
@@ -92,7 +93,7 @@ class EventAction extends Action {
 
         
         await calendar.events.insert({
-            auth: this.service.oauth2Client,
+            auth: this.service.oauth2Client.getAuthenticator(),
             calendarId: 'primary',
             resource: event,
         });

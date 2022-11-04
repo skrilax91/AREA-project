@@ -18,7 +18,10 @@ router.post( '/api/auth/login', catchErrors( AuthController.login ) );
 router.post( '/api/auth/logout', ApiTokenAuthenticator(), catchErrors( AuthController.logout ) );
 
 router.get( '/api/auth/googleAuth', catchErrors( AuthController.googleAuth ) );
+
+
 router.get('/api/user/services', ApiTokenAuthenticator(), catchErrors( UserController.getServices ));
+router.get('/api/user/profile', ApiTokenAuthenticator(), catchErrors( UserController.getProfile ));
 
 router.get('/api/services', catchErrors( ServiceController.getServices ));
 router.get('/api/services/:service_uid', ServiceController.getService);

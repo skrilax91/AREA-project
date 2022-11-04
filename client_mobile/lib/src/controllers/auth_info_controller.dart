@@ -1,3 +1,4 @@
+import "dart:developer" as developer;
 import "package:equatable/equatable.dart";
 import 'package:area/src/domain/entities/result.dart';
 import "package:flutter_riverpod/flutter_riverpod.dart";
@@ -21,11 +22,17 @@ class AuthInfoController extends StateNotifier<BaseAuthInfoState> {
         await _authInfoRepository.login(email: email, password: password);
     switch (result.type) {
       case ResultType.value:
+        developer.log("Logged In !", name: "AuthInfoController::login");
         state = LoggedAuthInfoState(authInfo: result.requireValue);
         return;
       case ResultType.error:
-        state = AuthInfoState(
-            hasError: true, errorMessage: result.requireError.toString());
+        final error = result.requireError.toString();
+        developer.log(
+          "Error !",
+          name: "AuthInfoController::login",
+          error: error,
+        );
+        state = AuthInfoState(hasError: true, errorMessage: error);
         return;
     }
   }

@@ -35,7 +35,7 @@ run `npm start` to run the sample.
 ## Webhook Subscription Creation
 Once the server is up and running you can send a POST to `http://localhost:3000/createWebhook/<twitchID>` to create a new *channel.follow* webhook. 
 
-You can modify the *createWebHookBody* payload in the index.js to try out other webhooks as well.
+You can modify the *createWebHookBody* payload in the index.jsx to try out other webhooks as well.
 
 In order to create a new webhook subscription you'll need to send a POST request to the https://api.twitch.tv/helix/eventsub/subscriptions endpoint.
 
@@ -44,7 +44,7 @@ Once the subscription is created you should expect an almost immediate call to y
 ## Signature Verification
 Everytime you callback is reached by Twitch we will include a sha256 signature encrypted with the secret you provided during subscription creation. Signature verification is done by crafting the same message that is encrypted on Twitch's side; signing the crafted message with the shared secret; and comparing if the messages match.
 
-We are covering this step in the `verifySignature` function in the index.js file.
+We are covering this step in the `verifySignature` function in the index.jsx file.
 
 ## Handling Notifications
 The `app.post('/notification',...)` function will handle all notifications sent to your callback URL. It will reply to Twitch with the proper responses to complete the webhook flows succesfuly plus logging payloads to the console.

@@ -1,10 +1,8 @@
-import ReactDOM from "react-dom";
 import React from "react";
-import reportWebVitals from "./reportWebVitals";
-
 import Header from "./components/header";
+import "./css/loginRegister.css";
 
-function Login() {
+function Content() {
     return (
         <section>
             <h1>Log in</h1>
@@ -16,18 +14,11 @@ function Login() {
         </section>);
 }
 
-function App() {
+function Login() {
     return (<div>
         <Header/>
-        <Login/>
+        <Content/>
     </div>);
 }
 
-const root = ReactDOM.createRoot(document.getElementById('App'));
-root.render(
-    <React.StrictMode>
-        <App/>
-    </React.StrictMode>
-);
-
-reportWebVitals();
+export default Login;

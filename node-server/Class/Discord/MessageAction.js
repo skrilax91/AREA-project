@@ -12,23 +12,6 @@ class MessageAction extends Action {
         this.hook = new Webhook(this.params.webhook);
     }
 
-    paramsValidator() {
-        if (!super.paramsValidator())
-            return false;
-
-        let pattern = this.constructor.getParamsPattern();
-
-        for (let param of pattern) {
-            if (!this.params[param.name])
-                return false;
-
-            if (typeof this.params[param.name] != param.type)
-                return false;
-        }
-
-        return true;
-    }
-
     static getParamsPattern() {
         return [
             {
@@ -50,7 +33,7 @@ class MessageAction extends Action {
     }
 
     async execute(config) {
-        if (!this.paramsValidator()) {
+        if (!this.constructor.paramsValidator(this.params)) {
             console.log("Can't execute " + EventAction.name + " Action, bad params");
             return null;
         }

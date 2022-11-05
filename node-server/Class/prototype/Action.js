@@ -14,8 +14,31 @@ class Action {
         this.service = service;
     }
 
-	paramsValidator() {
-        return (this.params);
+	static paramsValidator(params) {
+        if (!params)
+            return false;
+
+        let pattern = this.getParamsPattern();
+
+        for (let param of pattern) {
+            if (!param.required)
+                continue;
+
+            if (!params[param.name]) {
+                if (!param.mutualized)
+                    return false;
+                
+                let find = false;
+                for (let mut of param.mutualized)
+                    if (params[mut])
+                        find = true;
+                
+                if (!find)
+                    return false;
+            } else if (typeof params[param.name] != param.type)
+                return false;
+        }
+        return true;
     }
 
     static getJsonInfos() {

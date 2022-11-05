@@ -57,7 +57,7 @@ form button:hover {
     background-color: rgb(94, 94, 94);
 }
 
-p a {
+p Link {
     display: block;
     margin-top: 10px;
     text-decoration: none;

@@ -1,6 +1,5 @@
 import React from "react";
-import Header from "./components/header";
-import "./css/loginRegister.css";
+import Header from "./components/Header";
 
 function Content() {
     return (

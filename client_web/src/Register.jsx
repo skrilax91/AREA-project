@@ -1,7 +1,5 @@
 import React from "react";
-import Header from "./components/header";
-import "./css/loginRegister.css";
-import "./css/global.css";
+import "./components/header.module.css";
 
 function Register() {
     return (<div id="app">

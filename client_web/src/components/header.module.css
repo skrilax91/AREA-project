@@ -31,7 +31,7 @@ header li:hover {
     color: rgb(94, 94, 94);
 }
 
-#register {
+.btnHeader {
     margin-left: 1rem;
     color: white;
     font-size: .8rem;
@@ -48,7 +48,7 @@ header li:hover {
     display: inline-block;
 }
 
-#register:hover {
+.btnHeader:hover {
     background-color: rgb(94, 94, 94);
     color: black;
 }

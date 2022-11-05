@@ -8,7 +8,7 @@ header {
     z-index: 2;
 }
 
-header #register {
+header .register {
     color: #222!important;
     background-color: white;
 }
@@ -22,7 +22,7 @@ section {
     max-height: 90%;
 }
 
-.home-content {
+.homeContent {
     position: relative;
     z-index: 1;
     margin-left: auto;
@@ -35,7 +35,7 @@ section {
     color: white;
 }
 
-#content-link {
+.contentLink {
     border-radius: 5rem;
     background-color: #fff;
     color: #222;
@@ -46,25 +46,25 @@ section {
     margin-top: 50px;
 }
 
-#content-link a {
+.contentLink a {
     text-decoration: none;
     color: #222;
 }
 
-.home-content h1 {
+.homeContent h1 {
     font-size: 3.5rem;
     font-weight: 800;
     line-height: 4.44rem;
 }
 
-.home-content p {
+.homeContent p {
     text-shadow: 0 0 10px rgba(34,34,34,.6),0 0 10px rgba(34,34,34,.6),0 0 10px rgba(34,34,34,.6);
     font-size: 1.3rem;
     font-weight: 600;
     line-height: 1.7rem;
 }
 
-.bg-circle {
+.bgCircle {
     background-image: url('https://web-assets.ifttt.com/packs/media/prosumer/svg--home--circle-8e9b206299f7a3ea3488.svg');
     background-position: top;
     background-repeat: no-repeat;

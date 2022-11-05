@@ -1,28 +1,29 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import "./css/home.css";
-import Header from "./components/header";
+
+import style from "./styles/home.module.css";
+import Header from "./components/Header";
 
 function Content() {
-    return (<section>
-        <div className="home-content">
+    return (<section className={style.section}>
+        <div className={style.homeContent}>
             <h1>Every thing works
                 better together</h1>
             <p>Quickly and easily automate your favorite apps and devices.</p>
-            <div id="content-link">
-                <Link to="register">Start today</Link>
+            <div className={style.contentLink}>
+                <Link className={style.register} to="register">Start today</Link>
             </div>
         </div>
-        <div className="bg-circle"></div>
+        <div className={style.bgCircle}></div>
     </section>);
 }
 
 function Home() {
     return (
-        <>
-            <Header/>
+        <div className={style.body}>
+            <Header className={style.header}/>
             <Content/>
-        </>
+        </div>
     );
 }
 

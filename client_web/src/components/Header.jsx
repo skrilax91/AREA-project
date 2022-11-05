@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import "../css/global.css";
+import style from "./header.module.css";
 
 function Logo() {
     return (
@@ -11,8 +11,8 @@ function Logo() {
 function Buttons() {
     return (
         <ul>
-            <li id="login"><Link to="login">Login</Link></li>
-            <li><Link id="register" to="login">Get Started</Link></li>
+            <li id="login"><Link className={style.btnHeader} to="login">Login</Link></li>
+            <li><Link className={style.btnHeader} to="login">Get Started</Link></li>
         </ul>
     );
 }

@@ -2,12 +2,16 @@ const CalendarService = require("../Class/Services/CalendarService");
 const TwitchService = require("../Class/Services/TwitchService");
 const jnestedReplace = require('json-nested-replace');
 const WebHookService = require("../Class/Services/WebHookService");
+const SteamService = require("../Class/Services/SteamService");
+const DiscordService = require("../Class/Services/DiscordService");
 
 class ServiceManager {
     static services = [
         TwitchService,
         CalendarService,
-        WebHookService
+        WebHookService,
+        SteamService,
+        DiscordService
     ];
 
     static getService(uid) {

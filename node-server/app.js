@@ -1,4 +1,6 @@
 var express = require('express');
+const passport = require('passport');
+const googleStratergy = require('./Security/googleStrategy');
 var bodyPareser = require('body-parser');
 var path = require('path');
 require('dotenv').config({path: __dirname + '/.env'})
@@ -22,6 +24,7 @@ server.disable( 'x-powered-by' );
 server.set('trust proxy', true);
 
 // Middleware
+server.use(passport.initialize())
 server.use( '/Assets', express.static('assets') )
 server.use( bodyPareser.urlencoded( { extended: false } ) );
 server.use( bodyPareser.json() );
@@ -35,8 +38,10 @@ server.use( session({
     cookie: { secure: false }
 }));
 
+server.get('/', passport.authenticate('google', {scope:['email', 'profile']}), (req,res)=>{});
 
-//server.use( require('./MiddleWares/ApiTokenAuthenticator') );
+
+server.get('/callback', passport.authenticate('google', {scope: ['email', 'profile']}), (req,res)=>{ console.log(req.user); return res.json({}); });
 
 // Routes
 server.use( '/', require('./Controllers/routes') );

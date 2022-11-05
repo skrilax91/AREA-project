@@ -5,12 +5,14 @@ class Trigger {
     enabled;
     params;
 
-    constructor(params = null) {
+    constructor(params = null, service = null) {
         if (this.constructor === Trigger) {
           throw new TypeError('Abstract class "Action" cannot be instantiated directly');
         }
+
         this.enabled = true;
         this.params = params;
+        this.service = service;
     }
 
     static paramsValidator(params) {

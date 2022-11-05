@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
 
     async triggerLoop(trigger) {
       while (true) {
-        console.log("Awaiting new follow...");
+        console.log("Launching trigger " + trigger.constructor.name + "...");
         let res = await trigger.process();
         if (res == null)
           break;

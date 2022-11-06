@@ -6,6 +6,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login";
 import Connected from "./Connected";
+import Service from "./Services";
 
 function App() {
     return (<React.StrictMode>
@@ -14,6 +15,7 @@ function App() {
                     <Route index element={<Home/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/connected" element={<Connected/>}/>
+                    <Route path="/service" element={<Service/>}/>
                 </Routes>
             </BrowserRouter>
         </React.StrictMode>

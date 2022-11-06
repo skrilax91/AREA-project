@@ -9,7 +9,7 @@ function Content() {
             <h1 className={style.loginMessage}>Log in</h1>
             <form className={style.loginForm}>
                 <input className={style.loginInput} type="email" placeholder="Email"/>
-                <input className={style.loginInput} type="email" placeholder="Password"/>
+                <input className={style.loginInput} type="password" placeholder="Password"/>
                 <button className={style.loginButton} type="submit">Log in</button>
             </form>
         </section>);
@@ -17,7 +17,7 @@ function Content() {
 
 function Login() {
     return (<div>
-        <Header/>
+        <Header isAuthenticated={false}/>
         <Content/>
     </div>);
 }

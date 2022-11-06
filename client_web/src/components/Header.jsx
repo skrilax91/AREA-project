@@ -1,29 +1,47 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import style from "./header.module.css";
+import s from "./header.module.css";
 
 function Logo() {
     return (
-        <h1 className={style.headerText}><Link to="/">AREA</Link></h1>
+        <h1 className={s.headerText}><Link to="/">AREA</Link></h1>
     );
 }
 
-function Buttons() {
+function NonAuthenticatedButtons() {
     return (
-        <ul className={style.headerUl}>
-            <li className={style.headerLi} id="login"><Link className={style.btnHeader} to="login">Login</Link></li>
-            <li className={style.headerLi}><Link className={style.btnHeader} to="login">Get Started</Link></li>
+        <ul className={s.headerUl}>
+            <li className={s.headerLi} id="login"><Link className={s.btnHeader} to="login">Login</Link></li>
+            <li className={s.headerLi}><Link className={s.btnHeader} to="login">Get Started</Link></li>
         </ul>
     );
 }
 
-function Header() {
+function AuthenticatedButtons() {
     return (
-        <header className={style.header}>
-            <Logo />
-            <Buttons />
-        </header>
-    )
+        <ul className={s.headerUl}>
+            <li className={s.headerLi} id="login"><Link className={s.btnHeader} to="settings">Settings</Link></li>
+            <li className={s.headerLi}><Link className={s.btnHeader} to="create">Create</Link></li>
+        </ul>
+    );
+}
+
+function Header(isAuthenticated) {
+    if (isAuthenticated) {
+        return (
+            <header className={s.header}>
+                <Logo/>
+                <AuthenticatedButtons/>
+            </header>
+        );
+    } else {
+        return (
+            <header className={s.header}>
+                <Logo/>
+                <NonAuthenticatedButtons/>
+            </header>
+        )
+    }
 }
 
 export default Header;

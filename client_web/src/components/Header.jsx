@@ -27,7 +27,7 @@ function AuthenticatedButtons() {
 }
 
 function Header(isAuthenticated) {
-    if (isAuthenticated) {
+    if (isAuthenticated === true) {
         return (
             <header className={s.header}>
                 <Logo/>

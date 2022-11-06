@@ -1,6 +1,6 @@
 body {
     overflow: hidden;
-    background-color: #222;;
+    background-color: #222;
 }
 
 header {
@@ -8,7 +8,7 @@ header {
     z-index: 2;
 }
 
-header .register {
+header .btnHeader {
     color: #222!important;
     background-color: white;
 }
@@ -17,7 +17,7 @@ header h1, header li, header a{
     color: white !important;
 }
 
-section {
+.homeSection {
     overflow: auto;
     max-height: 90%;
 }
@@ -42,8 +42,7 @@ section {
     font-size: 1.8rem;
     padding: 1.6rem 4.4rem;
     width: 50%;
-    margin: 0 auto;
-    margin-top: 50px;
+    margin: 50px auto 0;
 }
 
 .contentLink a {

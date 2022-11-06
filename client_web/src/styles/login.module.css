@@ -1,4 +1,4 @@
-section {
+.loginSection {
     max-width: 36em;
     width: 100%;
     margin-left: auto;
@@ -6,18 +6,18 @@ section {
     text-align: center;
 }
 
-section h1 {
+.loginMessage {
     font-size: 2.6rem;
     font-family: 'Krona One', sans-serif;
 }
 
-form {
+.loginForm {
     margin: 2em auto 1em;
     max-width: 30em;
     text-align: left;
 }
 
-input {
+.loginInput {
     display: block;
     width: 440px;
     height: 30px;
@@ -36,12 +36,7 @@ input[type='checkbox'] {
     display: inline-block;
 }
 
-form div label {
-    margin-left: 20px;
-    vertical-align:super;
-}
-
-form button {
+form .loginButton {
     width: 480px;
     height: 110px;
     padding: .7em .75em;
@@ -55,11 +50,4 @@ form button {
 
 form button:hover {
     background-color: rgb(94, 94, 94);
-}
-
-p Link {
-    display: block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #09f;
 }

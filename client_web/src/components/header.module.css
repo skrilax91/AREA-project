@@ -8,7 +8,7 @@ h1, h1 a {
     font-family: 'Krona One', sans-serif;
 }
 
-header h1 {
+header .headerText {
     margin-top: 20px;
     margin-left: 20px;
     display: inline-block;
@@ -16,18 +16,18 @@ header h1 {
     font-weight: 800;
 }
 
-header ul {
+header .headerUl {
     display: inline;
     float: right;
     margin-right: 20px;
 }
 
-header li {
+header .headerLi {
     display: inline;
     font-size: .9em;
 }
 
-header li:hover {
+header .headerLi:hover {
     color: rgb(94, 94, 94);
 }
 

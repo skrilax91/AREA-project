@@ -8,6 +8,15 @@ services:
       - "./client_mobile:/project"
       - "build:/project/build/app/outputs/flutter-apk"
 
+  client_web:
+    build: client_web
+    container_name: client_web
+    volumes:
+      - "./client_web:/project"
+    ports:
+      - "3000:3000"
+    restart: always
+
   db:
     image: mysql
     container_name: db_docker_area

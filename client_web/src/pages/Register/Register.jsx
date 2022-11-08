@@ -1,5 +1,5 @@
 import React from "react";
-import "./components/header.module.css";
+import "../../components/header.css";
 
 function Register() {
     return (<div id="app">

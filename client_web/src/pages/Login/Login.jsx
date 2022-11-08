@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "./components/Header";
+import Header from "../../components/Header";
 
-import style from "./styles/login.module.css";
+import style from "./login.scss";
 
 function Content() {
     return (
-        <section className={style.loginSection}>
+        <section className="loginSection">
             <h1 className={style.loginMessage}>Log in</h1>
             <form className={style.loginForm}>
                 <input className={style.loginInput} type="email" placeholder="Email"/>

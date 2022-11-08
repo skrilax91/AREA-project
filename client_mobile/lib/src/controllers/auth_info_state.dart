@@ -1,5 +1,7 @@
 part of "auth_info_controller.dart";
 
+typedef AsyncAuthInfoState = AsyncValue<AuthInfoState>;
+
 abstract class BaseAuthInfoState<T extends BaseAuthInfoState<T>>
     extends Equatable {
   final bool isLoading;

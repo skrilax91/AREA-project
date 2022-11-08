@@ -1,4 +1,4 @@
-import "dart:developer" as developer;
+import 'dart:async';
 import "package:equatable/equatable.dart";
 import 'package:area/src/domain/entities/result.dart';
 import "package:flutter_riverpod/flutter_riverpod.dart";
@@ -8,32 +8,36 @@ import "../domain/repositories/auth_info_repository.dart";
 
 part "auth_info_state.dart";
 
-class AuthInfoController extends StateNotifier<BaseAuthInfoState> {
-  final AuthInfoRepository _authInfoRepository;
+class AuthInfoController extends AsyncNotifier<BaseAuthInfoState> {
+  AuthInfoController();
 
-  AuthInfoController({
-    required AuthInfoRepository authInfoRepository,
-  })  : _authInfoRepository = authInfoRepository,
-        super(const AuthInfoState());
-
-  Future<void> login({required String email, required String password}) async {
-    state = const AuthInfoState(isLoading: true);
-    final result =
-        await _authInfoRepository.login(email: email, password: password);
-    switch (result.type) {
-      case ResultType.value:
-        developer.log("Logged In !", name: "AuthInfoController::login");
-        state = LoggedAuthInfoState(authInfo: result.requireValue);
-        return;
-      case ResultType.error:
-        final error = result.requireError.toString();
-        developer.log(
-          "Error !",
-          name: "AuthInfoController::login",
-          error: error,
-        );
-        state = AuthInfoState(hasError: true, errorMessage: error);
-        return;
-    }
+  @override
+  FutureOr<BaseAuthInfoState> build() {
+    return const AuthInfoState(isLoading: true);
   }
+
+  Future<void> login(String email, String password) async {
+    state = const AsyncAuthInfoState.data(AuthInfoState(isLoading: true));
+    state = await AsyncAuthInfoState.guard(() async {
+      final result = await ref
+          .read(authInfoRepositoryProvider)
+          .login(email: email, password: password);
+
+      if (result.type == ResultType.error) {
+        return AuthInfoState(
+            hasError: true, errorMessage: result.requireError.toString());
+      } else {
+        return LoggedAuthInfoState(authInfo: result.requireValue);
+      }
+    });
+  }
+
+  Future<void> register() async {}
+
+  bool get isLoading => state.isLoading;
 }
+
+final authInfoControllerProvider =
+    AsyncNotifierProvider<AuthInfoController, BaseAuthInfoState>(() {
+  return AuthInfoController();
+});

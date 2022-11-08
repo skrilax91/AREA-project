@@ -1,25 +1,22 @@
+import 'package:area/src/presentation/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final helloWorldProvider = Provider((_) => 'Hello World');
-
 class App extends ConsumerWidget {
-    const App({Key? key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
-    @override
-    Widget build(BuildContext context, WidgetRef ref) {
-        final String value = ref.watch(helloWorldProvider);
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.read(routerProvider);
 
-        return MaterialApp(
-            theme: ThemeData(
-                useMaterial3: true,
-            ),
-            home: Scaffold(
-                appBar: AppBar(title: const Text('AREA')),
-                body: Center(
-                    child: Text(value),
-                ),
-            ),
-        );
-    }
+    return MaterialApp.router(
+      routeInformationParser: router.routeInformationParser,
+      routerDelegate: router.routerDelegate,
+      routeInformationProvider: router.routeInformationProvider,
+      title: "AREA",
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
+    );
+  }
 }

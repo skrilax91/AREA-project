@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class App extends StatelessWidget {
-  const App({super.key});
+class Index extends StatelessWidget {
+  const Index({super.key});
 
   // This widget is the root of your application.
   @override
@@ -37,7 +37,7 @@ class MyHomePage extends StatefulWidget {
   // how it looks.
 
   // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
+  // case the title) provided by the parent (in this case the Index widget) and
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
+        // the Index.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: Center(

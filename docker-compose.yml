@@ -12,7 +12,7 @@ services:
     build: client_web
     container_name: client_web
     volumes:
-      - "./client_web:/project"
+      - "./client_web:/app"
     ports:
       - "3000:3000"
     restart: always

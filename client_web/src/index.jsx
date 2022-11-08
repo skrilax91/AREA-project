@@ -8,7 +8,7 @@ import Login from "./pages/Login/Login";
 import Connected from "./pages/Connected/connected";
 import Service from "./pages/Services/Services";
 
-function App() {
+function Index() {
     return (<React.StrictMode>
             <BrowserRouter>
                 <Routes>
@@ -22,7 +22,7 @@ function App() {
     )
 }
 
-const root = createRoot(document.getElementById('App'));
-root.render(<App/>);
+const root = createRoot(document.getElementById('Index'));
+root.render(<Index/>);
 
 reportWebVitals();

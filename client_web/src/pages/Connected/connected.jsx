@@ -1,7 +1,7 @@
 import Header from "../../components/Header";
 import React from 'react';
 import ReactDOM from 'react-dom';
-import style from "../../styles/connected.module.css";
+import style from "./connected.module.css";
 
 function Service() {
     const data = [{

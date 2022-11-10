@@ -1,7 +1,7 @@
-import '../datasources/remote/area_api.dart';
-import '../../domain/entities/result.dart';
-import '../../domain/entities/auth_info.dart';
-import '../../domain/repositories/auth_info_repository.dart';
+import "../datasources/remote/area_api.dart";
+import "../../domain/entities/result.dart";
+import "../../domain/entities/auth_info.dart";
+import "../../domain/repositories/auth_info_repository.dart";
 
 class AuthInfoRepositoryImpl implements AuthInfoRepository {
   final AreaApi _areaApi;

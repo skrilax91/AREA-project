@@ -1,6 +1,6 @@
-import 'dart:async';
+import "dart:async";
 import "package:equatable/equatable.dart";
-import 'package:area/src/domain/entities/result.dart';
+import "package:area/src/domain/entities/result.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
 import "../domain/entities/auth_info.dart";

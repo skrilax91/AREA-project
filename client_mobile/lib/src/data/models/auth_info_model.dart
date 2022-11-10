@@ -1,5 +1,5 @@
-import 'user_model.dart';
-import '../../domain/entities/auth_info.dart';
+import "user_model.dart";
+import "../../domain/entities/auth_info.dart";
 
 class AuthInfoModel extends AuthInfo {
   AuthInfoModel({

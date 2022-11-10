@@ -1,7 +1,5 @@
 import Header from "../../components/Header";
 import React from 'react';
-import ReactDOM from 'react-dom';
-import style from "./connected.module.css";
 
 function Service() {
     const data = [{
@@ -17,7 +15,7 @@ function Service() {
     return (<div>
         {data.map(function (d, idx) {
             return (<div key={idx} style={{backgroundColor: d.color}}>
-                <img src={d.image}/>
+                <img src={d.image} alt="Hello"/>
                 <h3>{d.text}</h3>
             </div>
             )})};

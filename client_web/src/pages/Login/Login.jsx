@@ -6,16 +6,14 @@ import style from "./login.css";
 
 function Content() {
     let handleSubmit = (event) => {
-        event.preventDefault();
         let email = event.target[0].value;
         let password = event.target[1].value;
         let rememberMe = event.target[2].value;
+        loginRequest(email, password, rememberMe);
 
-        useEffect(() => {
-            loginRequest(email, password, rememberMe);
-        }, []);
 
     }
+
     return (
         <section className="loginSection">
             <h1 className={style.loginMessage}>Log in</h1>

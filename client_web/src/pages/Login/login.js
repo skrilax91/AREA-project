@@ -1,8 +1,5 @@
-import React from "react";
-
-
 export default function loginRequest(email, password, rememberMe) {
-    return fetch("http://localhost:8080/api/auth/login", {
+    return fetch("server/api/auth/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

@@ -19,6 +19,7 @@ function Content() {
                 <input className={style.loginInput} type="email" placeholder="Email"/>
                 <input className={style.loginInput} type="password" placeholder="Password"/>
                 <input type="checkbox" value="lsRememberMe" id="rememberMe"/>
+                <label>Remember me</label>
                 <button className={style.loginButton} type="submit">Log in</button>
             </form>
         </section>);

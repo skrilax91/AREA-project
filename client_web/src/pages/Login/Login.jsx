@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import Header from "../../components/Header";
 import loginRequest from "./login"
 
-import style from "./login.css";
+import style from "./login.module.css";
 
 function Content() {
     let handleSubmit = (event) => {
@@ -10,8 +10,6 @@ function Content() {
         let password = event.target[1].value;
         let rememberMe = event.target[2].value;
         loginRequest(email, password, rememberMe);
-
-
     }
 
     return (

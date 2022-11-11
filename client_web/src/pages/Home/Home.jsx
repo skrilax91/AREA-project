@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import style from "./home.css";
+import style from "./home.module.css";
 import Header from "../../components/Header";
 
 function Content() {

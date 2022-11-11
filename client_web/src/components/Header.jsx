@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import s from "./header.css";
+import s from "./header.module.css";
 
 function Logo() {
     return (
@@ -11,8 +11,8 @@ function Logo() {
 function NonAuthenticatedButtons() {
     return (
         <ul className={s.headerUl}>
-            <li className={s.headerLi} id="login"><Link className={s.btnHeader} to="login">Login</Link></li>
-            <li className={s.headerLi}><Link className={s.btnHeader} to="login">Get Started</Link></li>
+            <li className={s.headerLi} id="login"><Link className={s.btnHeader} to="/login">Login</Link></li>
+            <li className={s.headerLi}><Link className={s.btnHeader} to="/register">Get Started</Link></li>
         </ul>
     );
 }
@@ -20,8 +20,8 @@ function NonAuthenticatedButtons() {
 function AuthenticatedButtons() {
     return (
         <ul className={s.headerUl}>
-            <li className={s.headerLi} id="login"><Link className={s.btnHeader} to="settings">Settings</Link></li>
-            <li className={s.headerLi}><Link className={s.btnHeader} to="create">Create</Link></li>
+            <li className={s.headerLi} id="login"><Link className={s.btnHeader} to="/settings">Settings</Link></li>
+            <li className={s.headerLi}><Link className={s.btnHeader} to="/create">Create</Link></li>
         </ul>
     );
 }

@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Connected from "./pages/Connected/connected";
 import Service from "./pages/Services/Services";
+import Register from "./pages/Register/Register";
 
 function Index() {
     return (<React.StrictMode>
@@ -14,6 +15,7 @@ function Index() {
                 <Routes>
                     <Route index element={<Home/>}/>
                     <Route path="/login" element={<Login/>}/>
+                    <Route path="/register" element={<Register/>}/>
                     <Route path="/connected" element={<Connected/>}/>
                     <Route path="/service" element={<Service/>}/>
                 </Routes>

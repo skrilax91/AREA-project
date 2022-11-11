@@ -1,3 +1,5 @@
+import 'package:area/src/controllers/register_controller.dart';
+import 'package:area/src/controllers/register_state.dart';
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
@@ -7,16 +9,23 @@ import "widgets/input_field.dart";
 import "controllers/user_register_form_controller.dart";
 
 class RegisterForm extends ConsumerWidget {
-  RegisterForm({super.key});
-  final TextEditingController _email = TextEditingController();
-  final TextEditingController _password = TextEditingController();
+  RegisterForm({
+    required String email,
+    required String password,
+  })  : _email = TextEditingController(text: email),
+        _password = TextEditingController(text: password);
+
+  final TextEditingController _email;
+  final TextEditingController _password;
   final TextEditingController _confirmPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final registerState = ref.read(registerControllerProvider);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         InputField(
           title: "Email",
@@ -52,7 +61,7 @@ class RegisterForm extends ConsumerWidget {
           error: ref
               .watch(userRegisterFormControllerProvider)
               .form
-              .confirm_password
+              .confirmPassword
               .errorMessage,
           controller: _confirmPassword,
         ),
@@ -61,7 +70,14 @@ class RegisterForm extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             ElevatedButton(
-              onPressed: () {},
+              onPressed:
+                  ref.watch(userRegisterFormControllerProvider).form.isValid
+                      ? () async {
+                          ref
+                              .read(registerControllerProvider.notifier)
+                              .register(_email.text, _password.text);
+                        }
+                      : null,
               child: const Text("Register"),
             ),
           ],
@@ -78,6 +94,8 @@ class RegisterPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final registerState = ref.watch(registerControllerProvider);
+
     return Scaffold(
       appBar: null,
       body: Column(
@@ -92,7 +110,22 @@ class RegisterPage extends ConsumerWidget {
               ),
             ],
           ),
-          RegisterForm(),
+          RegisterForm(
+              email: registerState.email, password: registerState.password),
+          if (registerState is ErrorRegisterState)
+            Text(
+              registerState.error ?? "",
+              style: TextStyle(
+                color: Theme.of(context).errorColor,
+              ),
+            ),
+          if (registerState is SuccessRegisterState)
+            Text(
+              "User ${registerState.email} registered !",
+              style: TextStyle(
+                color: Theme.of(context).highlightColor,
+              ),
+            ),
           GestureDetector(
             child: Text(
               "Or Login",

@@ -10,6 +10,8 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final authInfo = ref.read(authInfoControllerProvider);
+
     return Scaffold(
       appBar: AppBar(title: const Text("Home Page")),
       body: Center(

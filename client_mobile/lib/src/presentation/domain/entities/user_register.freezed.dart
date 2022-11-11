@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserRegisterEntity {
   Field get email => throw _privateConstructorUsedError;
   Field get password => throw _privateConstructorUsedError;
-  Field get confirm_password => throw _privateConstructorUsedError;
+  Field get confirmPassword => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserRegisterEntityCopyWith<UserRegisterEntity> get copyWith =>
@@ -31,11 +31,11 @@ abstract class $UserRegisterEntityCopyWith<$Res> {
           UserRegisterEntity value, $Res Function(UserRegisterEntity) then) =
       _$UserRegisterEntityCopyWithImpl<$Res, UserRegisterEntity>;
   @useResult
-  $Res call({Field email, Field password, Field confirm_password});
+  $Res call({Field email, Field password, Field confirmPassword});
 
   $FieldCopyWith<$Res> get email;
   $FieldCopyWith<$Res> get password;
-  $FieldCopyWith<$Res> get confirm_password;
+  $FieldCopyWith<$Res> get confirmPassword;
 }
 
 /// @nodoc
@@ -53,7 +53,7 @@ class _$UserRegisterEntityCopyWithImpl<$Res, $Val extends UserRegisterEntity>
   $Res call({
     Object? email = null,
     Object? password = null,
-    Object? confirm_password = null,
+    Object? confirmPassword = null,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -64,9 +64,9 @@ class _$UserRegisterEntityCopyWithImpl<$Res, $Val extends UserRegisterEntity>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as Field,
-      confirm_password: null == confirm_password
-          ? _value.confirm_password
-          : confirm_password // ignore: cast_nullable_to_non_nullable
+      confirmPassword: null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
               as Field,
     ) as $Val);
   }
@@ -89,9 +89,9 @@ class _$UserRegisterEntityCopyWithImpl<$Res, $Val extends UserRegisterEntity>
 
   @override
   @pragma('vm:prefer-inline')
-  $FieldCopyWith<$Res> get confirm_password {
-    return $FieldCopyWith<$Res>(_value.confirm_password, (value) {
-      return _then(_value.copyWith(confirm_password: value) as $Val);
+  $FieldCopyWith<$Res> get confirmPassword {
+    return $FieldCopyWith<$Res>(_value.confirmPassword, (value) {
+      return _then(_value.copyWith(confirmPassword: value) as $Val);
     });
   }
 }
@@ -104,14 +104,14 @@ abstract class _$$_UserRegisterEntityCopyWith<$Res>
       __$$_UserRegisterEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Field email, Field password, Field confirm_password});
+  $Res call({Field email, Field password, Field confirmPassword});
 
   @override
   $FieldCopyWith<$Res> get email;
   @override
   $FieldCopyWith<$Res> get password;
   @override
-  $FieldCopyWith<$Res> get confirm_password;
+  $FieldCopyWith<$Res> get confirmPassword;
 }
 
 /// @nodoc
@@ -127,7 +127,7 @@ class __$$_UserRegisterEntityCopyWithImpl<$Res>
   $Res call({
     Object? email = null,
     Object? password = null,
-    Object? confirm_password = null,
+    Object? confirmPassword = null,
   }) {
     return _then(_$_UserRegisterEntity(
       email: null == email
@@ -138,9 +138,9 @@ class __$$_UserRegisterEntityCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as Field,
-      confirm_password: null == confirm_password
-          ? _value.confirm_password
-          : confirm_password // ignore: cast_nullable_to_non_nullable
+      confirmPassword: null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
               as Field,
     ));
   }
@@ -152,7 +152,7 @@ class _$_UserRegisterEntity extends _UserRegisterEntity {
   const _$_UserRegisterEntity(
       {required this.email,
       required this.password,
-      required this.confirm_password})
+      required this.confirmPassword})
       : super._();
 
   @override
@@ -160,11 +160,11 @@ class _$_UserRegisterEntity extends _UserRegisterEntity {
   @override
   final Field password;
   @override
-  final Field confirm_password;
+  final Field confirmPassword;
 
   @override
   String toString() {
-    return 'UserRegisterEntity(email: $email, password: $password, confirm_password: $confirm_password)';
+    return 'UserRegisterEntity(email: $email, password: $password, confirmPassword: $confirmPassword)';
   }
 
   @override
@@ -175,13 +175,13 @@ class _$_UserRegisterEntity extends _UserRegisterEntity {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.confirm_password, confirm_password) ||
-                other.confirm_password == confirm_password));
+            (identical(other.confirmPassword, confirmPassword) ||
+                other.confirmPassword == confirmPassword));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, email, password, confirm_password);
+      Object.hash(runtimeType, email, password, confirmPassword);
 
   @JsonKey(ignore: true)
   @override
@@ -195,7 +195,7 @@ abstract class _UserRegisterEntity extends UserRegisterEntity {
   const factory _UserRegisterEntity(
       {required final Field email,
       required final Field password,
-      required final Field confirm_password}) = _$_UserRegisterEntity;
+      required final Field confirmPassword}) = _$_UserRegisterEntity;
   const _UserRegisterEntity._() : super._();
 
   @override
@@ -203,7 +203,7 @@ abstract class _UserRegisterEntity extends UserRegisterEntity {
   @override
   Field get password;
   @override
-  Field get confirm_password;
+  Field get confirmPassword;
   @override
   @JsonKey(ignore: true)
   _$$_UserRegisterEntityCopyWith<_$_UserRegisterEntity> get copyWith =>

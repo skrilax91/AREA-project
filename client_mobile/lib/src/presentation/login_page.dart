@@ -1,3 +1,4 @@
+import 'package:area/src/controllers/auth_info_controller.dart';
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
@@ -46,7 +47,13 @@ class LoginForm extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             ElevatedButton(
-              onPressed: () {},
+              onPressed: ref.watch(userLoginFormControllerProvider).form.isValid
+                  ? () async {
+                      ref
+                          .read(authInfoControllerProvider.notifier)
+                          .login(_email.text, _password.text);
+                    }
+                  : null,
               child: const Text("Login"),
             ),
           ],

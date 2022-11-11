@@ -12,8 +12,8 @@ import "home_page.dart";
 final _key = GlobalKey<NavigatorState>();
 
 final routerProvider = Provider<GoRouter>((ref) {
-  ref.watch(authInfoControllerProvider);
-  final authInfoController = ref.read(authInfoControllerProvider.notifier);
+  final authInfoState = ref.watch(authInfoControllerProvider);
+  final authInfoController = ref.watch(authInfoControllerProvider.notifier);
 
   return GoRouter(
     navigatorKey: _key,
@@ -48,7 +48,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     redirect: (context, state) {
       if (authInfoController.isLoading) return null;
 
-      final isAuth = authInfoController is LoggedAuthInfoState;
+      final isAuth = authInfoState.value is LoggedAuthInfoState;
 
       final isSplash = state.location == SplashPage.routeLocation;
       if (isSplash) {

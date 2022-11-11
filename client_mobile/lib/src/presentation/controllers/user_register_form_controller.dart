@@ -11,10 +11,10 @@ class UserRegisterFormController extends StateNotifier<UserRegisterFormState> {
 
   void setEmail(String email) {
     final isEmail = EmailValidator.validate(email);
-
     UserRegisterEntity form = state.form.copyWith(email: Field(value: email));
     late Field emailField;
-    if (isEmail || email == "") {
+
+    if (isEmail || email.isEmpty) {
       emailField = form.email.copyWith(isValid: true);
     } else {
       emailField =
@@ -23,9 +23,38 @@ class UserRegisterFormController extends StateNotifier<UserRegisterFormState> {
     state = state.copyWith(form: form.copyWith(email: emailField));
   }
 
-  void setPassword(String pass) {}
+  void setPassword(String password) {
+    final isValid = password.length >= 8 && RegExp(r"\d").hasMatch(password);
+    UserRegisterEntity form =
+        state.form.copyWith(password: Field(value: password));
+    late Field passwordField;
 
-  void setConfirmPassword(String pass) {}
+    if (isValid || password.isEmpty) {
+      passwordField = form.password.copyWith(isValid: true);
+    } else {
+      passwordField = form.password.copyWith(
+          isValid: false,
+          errorMessage:
+              "Password should be at least 8 characters and have a number.");
+    }
+    state = state.copyWith(form: form.copyWith(password: passwordField));
+  }
+
+  void setConfirmPassword(String confirmPassword) {
+    UserRegisterEntity form =
+        state.form.copyWith(confirmPassword: Field(value: confirmPassword));
+    final isValid = confirmPassword == state.form.password.value;
+    late Field confirmPasswordField;
+
+    if (isValid) {
+      confirmPasswordField = form.confirmPassword.copyWith(isValid: true);
+    } else {
+      confirmPasswordField = form.confirmPassword
+          .copyWith(isValid: false, errorMessage: "Passwords don't match.");
+    }
+    state = state.copyWith(
+        form: form.copyWith(confirmPassword: confirmPasswordField));
+  }
 }
 
 final userRegisterFormControllerProvider =

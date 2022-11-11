@@ -17,5 +17,5 @@ class UserLoginEntity with _$UserLoginEntity {
         password: Field(value: ''),
       );
 
-  bool get isValid => email.isValid && password.isValid;
+  bool get isValid => email.isValid;
 }

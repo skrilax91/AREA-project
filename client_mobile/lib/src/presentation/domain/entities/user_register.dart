@@ -10,17 +10,17 @@ class UserRegisterEntity with _$UserRegisterEntity {
   const factory UserRegisterEntity({
     required Field email,
     required Field password,
-    required Field confirm_password,
+    required Field confirmPassword,
   }) = _UserRegisterEntity;
 
   factory UserRegisterEntity.empty() => const UserRegisterEntity(
         email: Field(value: ""),
         password: Field(value: ""),
-        confirm_password: Field(value: ""),
+        confirmPassword: Field(value: ""),
       );
 
   bool get isValid =>
       email.isValid &&
       password.isValid &&
-      password.value == confirm_password.value;
+      password.value == confirmPassword.value;
 }

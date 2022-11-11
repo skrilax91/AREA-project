@@ -32,8 +32,6 @@ class AuthInfoController extends AsyncNotifier<BaseAuthInfoState> {
     });
   }
 
-  Future<void> register() async {}
-
   bool get isLoading => state.isLoading;
 }
 

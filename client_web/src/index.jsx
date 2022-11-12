@@ -9,16 +9,23 @@ import Register from "./pages/Register/Register";
 import Header from "./components/Header";
 import NoMatch from "./pages/notFound/notFound";
 import Logout from "./components/Logout";
+import Explore from './pages/Explore/Explore';
+import Developers from './pages/Developers/Developers';
+import Applets from './pages/Applets/Applets';
+import Create from './pages/Create/Create';
+import Settings from './pages/Settings/Settings';
+import reportWebVitals from "./reportWebVitals";
+import {createRoot} from "react-dom/client";
 
-function setToken(userToken) {
-    sessionStorage.setItem('token', JSON.stringify(userToken));
-}
-
-function getToken() {
-    const tokenString = sessionStorage.getItem('token');
-    const userToken = JSON.parse(tokenString);
-    return userToken?.token
-}
+//function setToken(userToken) {
+//    sessionStorage.setItem('token', JSON.stringify(userToken));
+//}
+//
+//function getToken() {
+//    const tokenString = sessionStorage.getItem('token');
+//    const userToken = JSON.parse(tokenString);
+//    return userToken?.token
+//}
 
 function Protected({isLoggedIn, element}) {
     return (
@@ -27,11 +34,6 @@ function Protected({isLoggedIn, element}) {
         </>
     );
 }
-import Explore from './pages/Explore/Explore';
-import Developers from './pages/Developers/Developers';
-import Applets from './pages/Applets/Applets';
-import Create from './pages/Create/Create';
-import Settings from './pages/Settings/Settings';
 
 
 function App() {
@@ -58,7 +60,6 @@ function App() {
                 <Route path="/create" element={<Create/>}/>
                 <Route path="/settings" element={<Settings/>}/>
                 <Route path="*" element={<NoMatch/>}/>
-
             </Routes>
         </>
     )

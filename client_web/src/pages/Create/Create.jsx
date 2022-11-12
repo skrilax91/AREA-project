@@ -19,7 +19,6 @@ function Content() {
 function Create() {
     return (
         <div>
-            <Header isAuthenticated={false}/>
             <Content/>
         </div>
     );

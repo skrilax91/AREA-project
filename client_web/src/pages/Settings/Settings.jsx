@@ -31,7 +31,6 @@ function Content() {
 function Settings() {
     return (
         <div>
-            <Header isAuthenticated={false}/>
             <Content/>
         </div>
     );

@@ -18,7 +18,6 @@ function Content() {
 function Applets() {
     return (
         <div>
-            <Header isAuthenticated={false}/>
             <Content/>
         </div>
     );

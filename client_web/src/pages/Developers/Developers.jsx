@@ -26,7 +26,6 @@ function Content() {
 function Developers() {
     return (
         <div>
-            <Header isAuthenticated={false}/>
             <Content/>
         </div>
     );

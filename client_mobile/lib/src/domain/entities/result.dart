@@ -8,9 +8,9 @@ class Result<T, U> {
   final U? _error;
   final T? _value;
 
-  T get requireValue => _value as T;
+  T get requireValue => _value as T; // XDD
 
-  U get requireError => _error as U;
+  U get requireError => _error as U; // LOL
 
   Result({
     required this.type,

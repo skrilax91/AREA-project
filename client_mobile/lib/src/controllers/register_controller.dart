@@ -21,7 +21,7 @@ class RegisterController extends StateNotifier<BaseRegisterState> {
           password: password,
           error: result.requireError.toString());
     } else {
-      state = SuccessRegisterState();
+      state = const SuccessRegisterState();
     }
   }
 }

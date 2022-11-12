@@ -67,15 +67,15 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       final isSplash = state.location == SplashPage.routeLocation;
       if (isSplash) {
-        return isAuth ? ProfilePage.routeLocation : LoginPage.routeLocation;
+        return isAuth ? NewAreaPage.routeLocation : LoginPage.routeLocation;
       }
       final isRegister = state.location == RegisterPage.routeLocation;
       if (isRegister) {
-        return isAuth ? ProfilePage.routeLocation : RegisterPage.routeLocation;
+        return isAuth ? NewAreaPage.routeLocation : RegisterPage.routeLocation;
       }
       final isLogginIn = state.location == LoginPage.routeLocation;
       if (isLogginIn) {
-        return isAuth ? ProfilePage.routeLocation : null;
+        return isAuth ? NewAreaPage.routeLocation : null;
       }
       return isAuth ? null : SplashPage.routeLocation;
     },

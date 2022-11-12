@@ -1,6 +1,5 @@
 import "package:equatable/equatable.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
-import "../domain/entities/user.dart";
 
 part "register_state.freezed.dart";
 
@@ -28,7 +27,7 @@ class RegisterState extends BaseRegisterState<RegisterState>
   const factory RegisterState({
     @Default("") String email,
     @Default("") String password,
-  }) = _BaseRegisterState;
+  }) = _RegisterState;
 }
 
 @freezed

@@ -1,6 +1,5 @@
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
-import "../entities/user.dart";
 import "../entities/result.dart";
 import "../../data/datasources/remote/area_api.dart";
 import "../../data/repositories/register_repository_impl.dart";
@@ -13,6 +12,6 @@ abstract class RegisterRepository {
 }
 
 final registerRepositoryProvider = Provider<RegisterRepository>((ref) {
-  final areaApi = ref.watch(areaApiProvider);
+  final areaApi = ref.read(areaApiProvider);
   return RegisterRepositoryImpl(areaApi: areaApi);
 });

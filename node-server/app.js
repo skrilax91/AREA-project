@@ -14,7 +14,10 @@ var cookieParser = require('cookie-parser');
 var requestIp = require('request-ip');
 var request = require('request');
 const AreaManager = require('./Services/AreaManager');
+const cors = require("cors");
 var server = express();
+
+server.use(cors());
 
 var http = require('http').createServer( server );
 

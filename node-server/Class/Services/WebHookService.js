@@ -1,5 +1,6 @@
 const Service = require("../prototype/Service");
 const axios = require('axios');
+const SendWebHookAction = require("../WebHook/SendWebHookAction");
 
 
 class WebHookService extends Service {
@@ -8,7 +9,9 @@ class WebHookService extends Service {
     static description = "This service provide possibility to trigger an area with an url, or call an url when area is triggered";
 
     static triggerPrototypes = [];
-    static actionPrototypes = [];
+    static actionPrototypes = [
+        SendWebHookAction
+    ];
 
     constructor() {
         super();

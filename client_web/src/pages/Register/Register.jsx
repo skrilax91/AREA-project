@@ -3,7 +3,6 @@ import "../../components/header.module.css";
 import style from "../Login/login.module.css";
 import Header from "../../components/Header";
 import registerRequest from "./register";
-import {useNavigate} from "react-router-dom";
 
 function Content() {
     const [message, setMessage] = useState("");
@@ -12,10 +11,12 @@ function Content() {
         event.preventDefault();
         let email = event.target[0].value;
         let password = event.target[1].value;
-        let rememberMe = event.target[2].value;
-        registerRequest(email, password, rememberMe)
+        registerRequest(email, password)
             .then(async response => {
                 const data = await response.json();
+                if (data.token) {
+                    localStorage.setItem("user", JSON.stringify(data));
+                }
                 if (!response.ok) {
                     const error = (data && data.message) || response.statusText;
                     setMessage("Error : " + error);

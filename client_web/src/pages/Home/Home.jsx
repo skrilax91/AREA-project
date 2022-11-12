@@ -7,8 +7,8 @@ import Header from "../../components/Header";
 function Content() {
     return (<section className={style.homeSection}>
         <div className={style.homeContent}>
-            <h1>Every thing works
-                better together</h1>
+            <h1>Every thing works</h1>
+            <h1>better together</h1>
             <p>Quickly and easily automate your favorite apps and devices.</p>
             <div className={style.contentLink}>
                 <Link className={style.btnHeader} to="register">Start today</Link>

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Rubik+Mono+One&display=swap');
 
 h1, h1 a {
-    font-family: 'Rubik Mono One', sans-serif;
+    font-family: 'Monaco', monospace;
 }
 
 * {
@@ -36,7 +36,7 @@ header .headerLi:hover {
     color: white;
     font-size: .8rem;
     padding-top: 10px;
-    background-color: #222;
+    background-color: rgba(17, 2, 2, 0);
     border-radius: 5rem;
     cursor: pointer;
     font-weight: 700;

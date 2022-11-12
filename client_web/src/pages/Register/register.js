@@ -1,8 +1,9 @@
 export default function registerRequest(email, password) {
-    return fetch("server/api/auth/register", {
+    return fetch("http://localhost:8080/api/auth/register", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({
             username: email,

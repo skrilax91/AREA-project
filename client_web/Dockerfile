@@ -11,10 +11,9 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json .
 COPY yarn.lock .
 
-COPY . .
-
 RUN yarn install
 
+COPY . .
 
 EXPOSE 3000
 

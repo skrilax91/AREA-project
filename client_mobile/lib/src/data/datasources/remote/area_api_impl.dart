@@ -43,6 +43,47 @@ class AreaApiImpl implements AreaApi {
     }
   }
 
+  @override
+  Future<List<ShortServiceModel>> getServices() async {
+    try {
+      final json = await _get("/services");
+      return ShortServiceModelCollection.fromJson(json)
+          .shortServiceModelCollection;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<Map<String, dynamic>> _get(
+    String path, {
+    String token = "",
+    Map<String, dynamic>? query,
+  }) async {
+    final endpoint = _baseUrl + path;
+    try {
+      final response = await _httpClient.get(
+        endpoint,
+        queryParameters: query,
+        options: Options(
+          headers: {
+            "X-Auth-Token": token,
+            "Accept": "*/*",
+          },
+        ),
+      );
+      if (response.statusCode != 200) {
+        throw Exception("Error ${response.statusCode}.");
+      }
+      return response.data;
+    } catch (e) {
+      if (e is DioError) {
+        throw Exception("Network error ! ${e.message}");
+      } else {
+        rethrow;
+      }
+    }
+  }
+
   Future<Map<String, dynamic>> _post(
     String path, {
     String token = "",

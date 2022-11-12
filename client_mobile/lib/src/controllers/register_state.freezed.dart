@@ -63,22 +63,22 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
 }
 
 /// @nodoc
-abstract class _$$_BaseRegisterStateCopyWith<$Res>
+abstract class _$$_RegisterStateCopyWith<$Res>
     implements $RegisterStateCopyWith<$Res> {
-  factory _$$_BaseRegisterStateCopyWith(_$_BaseRegisterState value,
-          $Res Function(_$_BaseRegisterState) then) =
-      __$$_BaseRegisterStateCopyWithImpl<$Res>;
+  factory _$$_RegisterStateCopyWith(
+          _$_RegisterState value, $Res Function(_$_RegisterState) then) =
+      __$$_RegisterStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String email, String password});
 }
 
 /// @nodoc
-class __$$_BaseRegisterStateCopyWithImpl<$Res>
-    extends _$RegisterStateCopyWithImpl<$Res, _$_BaseRegisterState>
-    implements _$$_BaseRegisterStateCopyWith<$Res> {
-  __$$_BaseRegisterStateCopyWithImpl(
-      _$_BaseRegisterState _value, $Res Function(_$_BaseRegisterState) _then)
+class __$$_RegisterStateCopyWithImpl<$Res>
+    extends _$RegisterStateCopyWithImpl<$Res, _$_RegisterState>
+    implements _$$_RegisterStateCopyWith<$Res> {
+  __$$_RegisterStateCopyWithImpl(
+      _$_RegisterState _value, $Res Function(_$_RegisterState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_BaseRegisterStateCopyWithImpl<$Res>
     Object? email = null,
     Object? password = null,
   }) {
-    return _then(_$_BaseRegisterState(
+    return _then(_$_RegisterState(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_BaseRegisterStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_BaseRegisterState extends _BaseRegisterState {
-  const _$_BaseRegisterState({this.email = "", this.password = ""}) : super._();
+class _$_RegisterState extends _RegisterState {
+  const _$_RegisterState({this.email = "", this.password = ""}) : super._();
 
   @override
   @JsonKey()
@@ -115,15 +115,14 @@ class _$_BaseRegisterState extends _BaseRegisterState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BaseRegisterStateCopyWith<_$_BaseRegisterState> get copyWith =>
-      __$$_BaseRegisterStateCopyWithImpl<_$_BaseRegisterState>(
-          this, _$identity);
+  _$$_RegisterStateCopyWith<_$_RegisterState> get copyWith =>
+      __$$_RegisterStateCopyWithImpl<_$_RegisterState>(this, _$identity);
 }
 
-abstract class _BaseRegisterState extends RegisterState {
-  const factory _BaseRegisterState(
-      {final String email, final String password}) = _$_BaseRegisterState;
-  const _BaseRegisterState._() : super._();
+abstract class _RegisterState extends RegisterState {
+  const factory _RegisterState({final String email, final String password}) =
+      _$_RegisterState;
+  const _RegisterState._() : super._();
 
   @override
   String get email;
@@ -131,7 +130,7 @@ abstract class _BaseRegisterState extends RegisterState {
   String get password;
   @override
   @JsonKey(ignore: true)
-  _$$_BaseRegisterStateCopyWith<_$_BaseRegisterState> get copyWith =>
+  _$$_RegisterStateCopyWith<_$_RegisterState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -44,5 +44,5 @@ Map<String, dynamic> _$$_ServiceReactionToJson(_$_ServiceReaction instance) =>
       'uid': instance.uid,
       'name': instance.name,
       'description': instance.description,
-      'params': instance.params,
+      'params': instance.params.map((e) => e.toJson()).toList(),
     };

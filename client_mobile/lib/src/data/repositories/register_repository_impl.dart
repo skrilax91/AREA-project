@@ -1,6 +1,5 @@
-import "../datasources/remote/area_api.dart";
 import "../../domain/entities/result.dart";
-import "../../domain/entities/user.dart";
+import "../datasources/remote/area_api.dart";
 import "../../domain/repositories/register_repository.dart";
 
 class RegisterRepositoryImpl implements RegisterRepository {

@@ -1,11 +1,11 @@
+import 'package:area/src/data/models/short_service_model.dart';
 import "package:dio/dio.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
-import "http_client.dart";
-import "../../models/user_model.dart";
 import "../../models/auth_info_model.dart";
-import "../../../domain/entities/user.dart";
 import "../../../domain/entities/auth_info.dart";
+
+import "http_client.dart";
 
 part "area_api_impl.dart";
 
@@ -19,6 +19,8 @@ abstract class AreaApi {
     required String email,
     required String password,
   });
+
+  Future<List<ShortServiceModel>> getServices();
 }
 
 final areaApiProvider = Provider<AreaApi>((ref) {

@@ -14,7 +14,7 @@ class Service with _$Service {
     required String uid,
     required String name,
     required String description,
-    required List<ServiceAction> actions,
+    required List<ServiceActionModel> actions,
     required List<ServiceReaction> reactions,
   }) = _Service;
 

@@ -23,7 +23,7 @@ mixin _$Service {
   String get uid => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  List<ServiceAction> get actions => throw _privateConstructorUsedError;
+  List<ServiceActionModel> get actions => throw _privateConstructorUsedError;
   List<ServiceReaction> get reactions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $ServiceCopyWith<$Res> {
       {String uid,
       String name,
       String description,
-      List<ServiceAction> actions,
+      List<ServiceActionModel> actions,
       List<ServiceReaction> reactions});
 }
 
@@ -79,7 +79,7 @@ class _$ServiceCopyWithImpl<$Res, $Val extends Service>
       actions: null == actions
           ? _value.actions
           : actions // ignore: cast_nullable_to_non_nullable
-              as List<ServiceAction>,
+              as List<ServiceActionModel>,
       reactions: null == reactions
           ? _value.reactions
           : reactions // ignore: cast_nullable_to_non_nullable
@@ -99,7 +99,7 @@ abstract class _$$_ServiceCopyWith<$Res> implements $ServiceCopyWith<$Res> {
       {String uid,
       String name,
       String description,
-      List<ServiceAction> actions,
+      List<ServiceActionModel> actions,
       List<ServiceReaction> reactions});
 }
 
@@ -135,7 +135,7 @@ class __$$_ServiceCopyWithImpl<$Res>
       actions: null == actions
           ? _value._actions
           : actions // ignore: cast_nullable_to_non_nullable
-              as List<ServiceAction>,
+              as List<ServiceActionModel>,
       reactions: null == reactions
           ? _value._reactions
           : reactions // ignore: cast_nullable_to_non_nullable
@@ -151,7 +151,7 @@ class _$_Service extends _Service {
       {required this.uid,
       required this.name,
       required this.description,
-      required final List<ServiceAction> actions,
+      required final List<ServiceActionModel> actions,
       required final List<ServiceReaction> reactions})
       : _actions = actions,
         _reactions = reactions,
@@ -166,9 +166,9 @@ class _$_Service extends _Service {
   final String name;
   @override
   final String description;
-  final List<ServiceAction> _actions;
+  final List<ServiceActionModel> _actions;
   @override
-  List<ServiceAction> get actions {
+  List<ServiceActionModel> get actions {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_actions);
   }
@@ -228,7 +228,7 @@ abstract class _Service extends Service {
       {required final String uid,
       required final String name,
       required final String description,
-      required final List<ServiceAction> actions,
+      required final List<ServiceActionModel> actions,
       required final List<ServiceReaction> reactions}) = _$_Service;
   const _Service._() : super._();
 
@@ -241,7 +241,7 @@ abstract class _Service extends Service {
   @override
   String get description;
   @override
-  List<ServiceAction> get actions;
+  List<ServiceActionModel> get actions;
   @override
   List<ServiceReaction> get reactions;
   @override

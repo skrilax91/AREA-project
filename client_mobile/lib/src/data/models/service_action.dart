@@ -22,16 +22,16 @@ class ServiceActionParameter with _$ServiceActionParameter {
 }
 
 @freezed
-class ServiceAction with _$ServiceAction {
-  const ServiceAction._();
+class ServiceActionModel with _$ServiceActionModel {
+  const ServiceActionModel._();
 
-  const factory ServiceAction({
+  const factory ServiceActionModel({
     required String uid,
     required String name,
     required String description,
     required List<ServiceActionParameter> params,
-  }) = _ServiceAction;
+  }) = _ServiceActionModel;
 
-  factory ServiceAction.fromJson(Map<String, dynamic> json) =>
-      _$ServiceActionFromJson(json);
+  factory ServiceActionModel.fromJson(Map<String, dynamic> json) =>
+      _$ServiceActionModelFromJson(json);
 }

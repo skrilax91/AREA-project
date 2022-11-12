@@ -258,12 +258,12 @@ abstract class _ServiceActionParameter extends ServiceActionParameter {
       throw _privateConstructorUsedError;
 }
 
-ServiceAction _$ServiceActionFromJson(Map<String, dynamic> json) {
-  return _ServiceAction.fromJson(json);
+ServiceActionModel _$ServiceActionModelFromJson(Map<String, dynamic> json) {
+  return _ServiceActionModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ServiceAction {
+mixin _$ServiceActionModel {
   String get uid => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -271,15 +271,15 @@ mixin _$ServiceAction {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ServiceActionCopyWith<ServiceAction> get copyWith =>
+  $ServiceActionModelCopyWith<ServiceActionModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ServiceActionCopyWith<$Res> {
-  factory $ServiceActionCopyWith(
-          ServiceAction value, $Res Function(ServiceAction) then) =
-      _$ServiceActionCopyWithImpl<$Res, ServiceAction>;
+abstract class $ServiceActionModelCopyWith<$Res> {
+  factory $ServiceActionModelCopyWith(
+          ServiceActionModel value, $Res Function(ServiceActionModel) then) =
+      _$ServiceActionModelCopyWithImpl<$Res, ServiceActionModel>;
   @useResult
   $Res call(
       {String uid,
@@ -289,9 +289,9 @@ abstract class $ServiceActionCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ServiceActionCopyWithImpl<$Res, $Val extends ServiceAction>
-    implements $ServiceActionCopyWith<$Res> {
-  _$ServiceActionCopyWithImpl(this._value, this._then);
+class _$ServiceActionModelCopyWithImpl<$Res, $Val extends ServiceActionModel>
+    implements $ServiceActionModelCopyWith<$Res> {
+  _$ServiceActionModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -328,11 +328,11 @@ class _$ServiceActionCopyWithImpl<$Res, $Val extends ServiceAction>
 }
 
 /// @nodoc
-abstract class _$$_ServiceActionCopyWith<$Res>
-    implements $ServiceActionCopyWith<$Res> {
-  factory _$$_ServiceActionCopyWith(
-          _$_ServiceAction value, $Res Function(_$_ServiceAction) then) =
-      __$$_ServiceActionCopyWithImpl<$Res>;
+abstract class _$$_ServiceActionModelCopyWith<$Res>
+    implements $ServiceActionModelCopyWith<$Res> {
+  factory _$$_ServiceActionModelCopyWith(_$_ServiceActionModel value,
+          $Res Function(_$_ServiceActionModel) then) =
+      __$$_ServiceActionModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -343,11 +343,11 @@ abstract class _$$_ServiceActionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ServiceActionCopyWithImpl<$Res>
-    extends _$ServiceActionCopyWithImpl<$Res, _$_ServiceAction>
-    implements _$$_ServiceActionCopyWith<$Res> {
-  __$$_ServiceActionCopyWithImpl(
-      _$_ServiceAction _value, $Res Function(_$_ServiceAction) _then)
+class __$$_ServiceActionModelCopyWithImpl<$Res>
+    extends _$ServiceActionModelCopyWithImpl<$Res, _$_ServiceActionModel>
+    implements _$$_ServiceActionModelCopyWith<$Res> {
+  __$$_ServiceActionModelCopyWithImpl(
+      _$_ServiceActionModel _value, $Res Function(_$_ServiceActionModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -358,7 +358,7 @@ class __$$_ServiceActionCopyWithImpl<$Res>
     Object? description = null,
     Object? params = null,
   }) {
-    return _then(_$_ServiceAction(
+    return _then(_$_ServiceActionModel(
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -381,8 +381,8 @@ class __$$_ServiceActionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ServiceAction extends _ServiceAction {
-  const _$_ServiceAction(
+class _$_ServiceActionModel extends _ServiceActionModel {
+  const _$_ServiceActionModel(
       {required this.uid,
       required this.name,
       required this.description,
@@ -390,8 +390,8 @@ class _$_ServiceAction extends _ServiceAction {
       : _params = params,
         super._();
 
-  factory _$_ServiceAction.fromJson(Map<String, dynamic> json) =>
-      _$$_ServiceActionFromJson(json);
+  factory _$_ServiceActionModel.fromJson(Map<String, dynamic> json) =>
+      _$$_ServiceActionModelFromJson(json);
 
   @override
   final String uid;
@@ -408,14 +408,14 @@ class _$_ServiceAction extends _ServiceAction {
 
   @override
   String toString() {
-    return 'ServiceAction(uid: $uid, name: $name, description: $description, params: $params)';
+    return 'ServiceActionModel(uid: $uid, name: $name, description: $description, params: $params)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ServiceAction &&
+            other is _$_ServiceActionModel &&
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -431,27 +431,29 @@ class _$_ServiceAction extends _ServiceAction {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ServiceActionCopyWith<_$_ServiceAction> get copyWith =>
-      __$$_ServiceActionCopyWithImpl<_$_ServiceAction>(this, _$identity);
+  _$$_ServiceActionModelCopyWith<_$_ServiceActionModel> get copyWith =>
+      __$$_ServiceActionModelCopyWithImpl<_$_ServiceActionModel>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ServiceActionToJson(
+    return _$$_ServiceActionModelToJson(
       this,
     );
   }
 }
 
-abstract class _ServiceAction extends ServiceAction {
-  const factory _ServiceAction(
-      {required final String uid,
-      required final String name,
-      required final String description,
-      required final List<ServiceActionParameter> params}) = _$_ServiceAction;
-  const _ServiceAction._() : super._();
+abstract class _ServiceActionModel extends ServiceActionModel {
+  const factory _ServiceActionModel(
+          {required final String uid,
+          required final String name,
+          required final String description,
+          required final List<ServiceActionParameter> params}) =
+      _$_ServiceActionModel;
+  const _ServiceActionModel._() : super._();
 
-  factory _ServiceAction.fromJson(Map<String, dynamic> json) =
-      _$_ServiceAction.fromJson;
+  factory _ServiceActionModel.fromJson(Map<String, dynamic> json) =
+      _$_ServiceActionModel.fromJson;
 
   @override
   String get uid;
@@ -463,6 +465,6 @@ abstract class _ServiceAction extends ServiceAction {
   List<ServiceActionParameter> get params;
   @override
   @JsonKey(ignore: true)
-  _$$_ServiceActionCopyWith<_$_ServiceAction> get copyWith =>
+  _$$_ServiceActionModelCopyWith<_$_ServiceActionModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

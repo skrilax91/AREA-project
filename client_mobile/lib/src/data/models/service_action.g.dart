@@ -28,8 +28,9 @@ Map<String, dynamic> _$$_ServiceActionParameterToJson(
       'mutualized': instance.mutualized,
     };
 
-_$_ServiceAction _$$_ServiceActionFromJson(Map<String, dynamic> json) =>
-    _$_ServiceAction(
+_$_ServiceActionModel _$$_ServiceActionModelFromJson(
+        Map<String, dynamic> json) =>
+    _$_ServiceActionModel(
       uid: json['uid'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
@@ -39,10 +40,11 @@ _$_ServiceAction _$$_ServiceActionFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_ServiceActionToJson(_$_ServiceAction instance) =>
+Map<String, dynamic> _$$_ServiceActionModelToJson(
+        _$_ServiceActionModel instance) =>
     <String, dynamic>{
       'uid': instance.uid,
       'name': instance.name,
       'description': instance.description,
-      'params': instance.params,
+      'params': instance.params.map((e) => e.toJson()).toList(),
     };

@@ -25,6 +25,7 @@ function AuthenticatedButtons() {
         <ul className={s.headerUl}>
             <li className={s.headerLi} id="login"><Link className={s.btnHeader} to="/settings">Settings</Link></li>
             <li className={s.headerLi}><Link className={s.btnHeader} to="/create">Create</Link></li>
+            <li className={s.headerLi}><Link className={s.btnHeader} to="/logout">Logout</Link></li>
         </ul>
     );
 }
@@ -33,7 +34,7 @@ function Header(isAuthenticated) {
     return (
         <header>
             <Logo/>
-            {isAuthenticated === true ? (<AuthenticatedButtons/>) : (<NonAuthenticatedButtons/>)}
+            {isAuthenticated ? <AuthenticatedButtons/> : <NonAuthenticatedButtons/>}
         </header>
     );
 }

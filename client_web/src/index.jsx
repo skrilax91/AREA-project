@@ -10,6 +10,17 @@ import Header from "./components/Header";
 import NoMatch from "./pages/notFound/notFound";
 import {createRoot} from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
+import Logout from "./components/Logout";
+
+function setToken(userToken) {
+    sessionStorage.setItem('token', JSON.stringify(userToken));
+}
+
+function getToken() {
+    const tokenString = sessionStorage.getItem('token');
+    const userToken = JSON.parse(tokenString);
+    return userToken?.token
+}
 
 function Protected({isLoggedIn, element}) {
     return (
@@ -20,24 +31,23 @@ function Protected({isLoggedIn, element}) {
 }
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+    const [Token, setToken] = useState(false);
     useEffect(() => {
         return () => {
-            setIsLoggedIn(localStorage.getItem("user") !== null);
+            setToken(localStorage.getItem("user") !== null);
         };
     }, [localStorage.getItem("user")]);
 
     return (
         <>
-            <Header isAuthenticated={isLoggedIn}/>
-            <h1>{isLoggedIn ? "connected" : "not connected"}</h1>
+            <Header isAuthenticated={Token}/>
             <Routes>
                 <Route index element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
-                <Route path="/connected" element={<Protected isLoggedIn={isLoggedIn}><Connected/></Protected>}/>
-                <Route path="/service" element={<Protected isLoggedIn={isLoggedIn}><Service/></Protected>}/>
+                <Route path="/connected" element={<Protected isLoggedIn={Token}><Connected/></Protected>}/>
+                <Route path="/service" element={<Protected isLoggedIn={Token}><Service/></Protected>}/>
+                <Route path="/logout" element={<Logout/>}/>
                 <Route path="*" element={<NoMatch/>}/>
             </Routes>
         </>

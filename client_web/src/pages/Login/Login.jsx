@@ -40,7 +40,7 @@ function Content() {
         </section>);
 }
 
-function Login() {
+function Login({setIsLoggedIn}) {
     return (<div>
         <Content/>
     </div>);

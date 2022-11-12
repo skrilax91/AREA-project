@@ -9,8 +9,11 @@ import Connected from "./pages/Connected/connected";
 import Service from "./pages/Services/Services";
 import Register from "./pages/Register/Register";
 import Explore from './pages/Explore/Explore';
-import Plans from './pages/Plans/Plans';
 import Developers from './pages/Developers/Developers';
+import Applets from './pages/Applets/Applets';
+import Create from './pages/Create/Create';
+import Settings from './pages/Settings/Settings';
+
 
 function Index() {
     return (<React.StrictMode>
@@ -22,8 +25,10 @@ function Index() {
                     <Route path="/connected" element={<Connected/>}/>
                     <Route path="/service" element={<Service/>}/>
                     <Route path="/explore" element={<Explore/>}/>
-                    <Route path="/plans" element={<Plans/>}/>
                     <Route path="/dev" element={<Developers/>}/>
+                    <Route path="/applets" element={<Applets/>}/>
+                    <Route path="/create" element={<Create/>}/>
+                    <Route path="/settings" element={<Settings/>}/>
                 </Routes>
             </BrowserRouter>
         </React.StrictMode>

@@ -1,3 +1,6 @@
+import 'package:area/src/presentation/navbar/area_list/area_list_page.dart';
+import 'package:area/src/presentation/navbar/navbar_page.dart';
+import 'package:area/src/presentation/navbar/new_area/new_area_page.dart';
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
@@ -7,7 +10,7 @@ import "../controllers/auth_info_controller.dart";
 import "login_page.dart";
 import "splash_page.dart";
 import "register_page.dart";
-import "home_page.dart";
+import "navbar/profile/profile_page.dart";
 
 final _key = GlobalKey<NavigatorState>();
 
@@ -33,16 +36,28 @@ final routerProvider = Provider<GoRouter>((ref) {
             return const LoginPage();
           }),
       GoRoute(
-          path: HomePage.routeLocation,
-          name: HomePage.routeName,
-          builder: (context, state) {
-            return const HomePage();
-          }),
-      GoRoute(
           path: RegisterPage.routeLocation,
           name: RegisterPage.routeName,
           builder: (context, state) {
             return const RegisterPage();
+          }),
+      GoRoute(
+          path: ProfilePage.routeLocation,
+          name: ProfilePage.routeName,
+          builder: (context, state) {
+            return NavBarPage(currentPage: NavBarPages.navProfile);
+          }),
+      GoRoute(
+          path: NewAreaPage.routeLocation,
+          name: NewAreaPage.routeName,
+          builder: (context, state) {
+            return NavBarPage(currentPage: NavBarPages.navAreaNew);
+          }),
+      GoRoute(
+          path: AreaListPage.routeLocation,
+          name: AreaListPage.routeName,
+          builder: (context, state) {
+            return NavBarPage(currentPage: NavBarPages.navAreaList);
           }),
     ],
     redirect: (context, state) {
@@ -52,15 +67,15 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       final isSplash = state.location == SplashPage.routeLocation;
       if (isSplash) {
-        return isAuth ? HomePage.routeLocation : LoginPage.routeLocation;
+        return isAuth ? ProfilePage.routeLocation : LoginPage.routeLocation;
       }
       final isRegister = state.location == RegisterPage.routeLocation;
       if (isRegister) {
-        return isAuth ? HomePage.routeLocation : RegisterPage.routeLocation;
+        return isAuth ? ProfilePage.routeLocation : RegisterPage.routeLocation;
       }
       final isLogginIn = state.location == LoginPage.routeLocation;
       if (isLogginIn) {
-        return isAuth ? HomePage.routeLocation : null;
+        return isAuth ? ProfilePage.routeLocation : null;
       }
       return isAuth ? null : SplashPage.routeLocation;
     },

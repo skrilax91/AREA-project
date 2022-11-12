@@ -12,8 +12,10 @@ class RegisterForm extends ConsumerWidget {
   RegisterForm({
     required String email,
     required String password,
+    Key? key,
   })  : _email = TextEditingController(text: email),
-        _password = TextEditingController(text: password);
+        _password = TextEditingController(text: password),
+        super(key: key);
 
   final TextEditingController _email;
   final TextEditingController _password;
@@ -21,8 +23,6 @@ class RegisterForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final registerState = ref.read(registerControllerProvider);
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,

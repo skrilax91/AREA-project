@@ -1,4 +1,5 @@
 import "dart:async";
+import 'package:area/src/domain/entities/user.dart';
 import "package:equatable/equatable.dart";
 import "package:area/src/domain/entities/result.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
@@ -13,7 +14,16 @@ class AuthInfoController extends AsyncNotifier<BaseAuthInfoState> {
 
   @override
   FutureOr<BaseAuthInfoState> build() {
-    return const AuthInfoState(isLoading: true);
+    // return const AuthInfoState(isLoading: true);
+    return LoggedAuthInfoState(
+      authInfo: AuthInfo(
+        token: "bWMCUWsTUUhx1JpAI55jSIm4m1JEdqXkN2aWu9vj",
+        user: User(
+          id: 3,
+          email: "test@hollow.moe",
+        ),
+      ),
+    );
   }
 
   Future<void> login(String email, String password) async {

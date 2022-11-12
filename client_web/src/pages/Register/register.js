@@ -9,10 +9,10 @@ export default function registerRequest(email, password) {
             password: password,
         })
     })
-        .then(response => response.json())
         .then(data => {
-            if (data.token) {
-                localStorage.setItem("user", JSON.stringify(data));
+            if (data.ok) {
+                console.log("Registration successful");
+                return data.json();
             }
             return data;
         });

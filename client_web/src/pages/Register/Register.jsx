@@ -6,6 +6,7 @@ import registerRequest from "./register";
 
 function Content() {
     let handleSubmit = (event) => {
+        event.preventDefault();
         let email = event.target[0].value;
         let password = event.target[1].value;
         let rememberMe = event.target[2].value;

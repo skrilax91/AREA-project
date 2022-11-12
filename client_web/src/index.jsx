@@ -8,6 +8,9 @@ import Login from "./pages/Login/Login";
 import Connected from "./pages/Connected/connected";
 import Service from "./pages/Services/Services";
 import Register from "./pages/Register/Register";
+import Explore from './pages/Explore/Explore';
+import Plans from './pages/Plans/Plans';
+import Developers from './pages/Developers/Developers';
 
 function Index() {
     return (<React.StrictMode>
@@ -18,6 +21,9 @@ function Index() {
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/connected" element={<Connected/>}/>
                     <Route path="/service" element={<Service/>}/>
+                    <Route path="/explore" element={<Explore/>}/>
+                    <Route path="/plans" element={<Plans/>}/>
+                    <Route path="/dev" element={<Developers/>}/>
                 </Routes>
             </BrowserRouter>
         </React.StrictMode>

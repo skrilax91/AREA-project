@@ -21,7 +21,6 @@ function Content() {
 function Home() {
     return (
         <div>
-            <Header isAuthenticated={false}/>
             <Content/>
         </div>
     );

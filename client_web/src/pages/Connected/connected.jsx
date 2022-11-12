@@ -28,7 +28,6 @@ function Content() {
 
 function Connected() {
     return (<div id="flex-div">
-        <Header isAuthenticated={true}></Header>
         <Content/>
     </div>);
 }

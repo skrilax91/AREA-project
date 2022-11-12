@@ -31,7 +31,6 @@ function Content() {
 
 function Services() {
     return (<div id="flex-div">
-        <Header isAuthenticated={true}></Header>
         <Content/>
     </div>);
 }

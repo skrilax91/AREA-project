@@ -43,7 +43,6 @@ function Content() {
 
 function Login() {
     return (<div>
-        <Header isAuthenticated={false}/>
         <Content/>
     </div>);
 }

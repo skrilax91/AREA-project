@@ -30,21 +30,12 @@ function AuthenticatedButtons() {
 }
 
 function Header(isAuthenticated) {
-    if (isAuthenticated === true) {
-        return (
-            <header className={s.header}>
-                <Logo/>
-                <AuthenticatedButtons/>
-            </header>
-        );
-    } else {
-        return (
-            <header className={s.header}>
-                <Logo/>
-                <NonAuthenticatedButtons/>
-            </header>
-        )
-    }
+    return (
+        <header>
+            <Logo/>
+            {isAuthenticated === true ? (<AuthenticatedButtons/>) : (<NonAuthenticatedButtons/>)}
+        </header>
+    );
 }
 
 export default Header;

@@ -40,7 +40,6 @@ function Content() {
 
 function Register() {
     return (<div>
-        <Header isAuthenticated={false}/>
         <Content/>
     </div>);
 }

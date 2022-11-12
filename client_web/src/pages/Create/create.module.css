@@ -1,0 +1,51 @@
+body {
+    overflow: hidden;
+    background-color: #222;
+}
+
+header .headerLi, header .headerUl, header a {
+    color: white !important;
+}
+
+
+.createSection {
+    overflow: auto;
+    max-height: 90%;
+}
+
+.createContent {
+    position: relative;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 75em;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.contentLink {
+    border-radius: 5rem;
+    background-color: #000;
+    color: #111;
+    font-size: 1.8rem;
+    padding: 1.6rem 4.4rem;
+    width: 50%;
+    margin: 50px auto 0;
+}
+
+.createContent h1 {
+    text-align: left;
+    font-size: 2.5rem;
+    font-weight: 200;
+    line-height: 4.44rem;
+}
+
+.createContent h3 {
+    text-align: left;
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1rem;
+}

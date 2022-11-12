@@ -8,8 +8,6 @@ import Service from "./pages/Services/Services";
 import Register from "./pages/Register/Register";
 import Header from "./components/Header";
 import NoMatch from "./pages/notFound/notFound";
-import {createRoot} from "react-dom/client";
-import reportWebVitals from "./reportWebVitals";
 import Logout from "./components/Logout";
 
 function setToken(userToken) {
@@ -29,6 +27,12 @@ function Protected({isLoggedIn, element}) {
         </>
     );
 }
+import Explore from './pages/Explore/Explore';
+import Developers from './pages/Developers/Developers';
+import Applets from './pages/Applets/Applets';
+import Create from './pages/Create/Create';
+import Settings from './pages/Settings/Settings';
+
 
 function App() {
     const [Token, setToken] = useState(false);
@@ -48,7 +52,13 @@ function App() {
                 <Route path="/connected" element={<Protected isLoggedIn={Token}><Connected/></Protected>}/>
                 <Route path="/service" element={<Protected isLoggedIn={Token}><Service/></Protected>}/>
                 <Route path="/logout" element={<Logout/>}/>
+                <Route path="/explore" element={<Explore/>}/>
+                <Route path="/dev" element={<Developers/>}/>
+                <Route path="/applets" element={<Applets/>}/>
+                <Route path="/create" element={<Create/>}/>
+                <Route path="/settings" element={<Settings/>}/>
                 <Route path="*" element={<NoMatch/>}/>
+
             </Routes>
         </>
     )

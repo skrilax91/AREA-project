@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import Header from "../../components/Header";
 import loginRequest from "./login"
 
 import style from "./login.module.css";

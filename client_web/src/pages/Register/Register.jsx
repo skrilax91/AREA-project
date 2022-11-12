@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import "../../components/header.module.css";
 import style from "../Login/login.module.css";
-import Header from "../../components/Header";
 import registerRequest from "./register";
 
 function Content() {

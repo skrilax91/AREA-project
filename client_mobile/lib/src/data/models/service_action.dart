@@ -4,6 +4,19 @@ part "service_action.freezed.dart";
 part "service_action.g.dart";
 
 @freezed
+class ServiceActionParameterCollection with _$ServiceActionParameterCollection {
+  const ServiceActionParameterCollection._();
+
+  const factory ServiceActionParameterCollection(
+    List<ServiceActionParameter> serviceActionParameterList,
+  ) = _ServiceActionParameterCollection;
+
+  factory ServiceActionParameterCollection.fromJson(
+          Map<String, dynamic> json) =>
+      _$ServiceActionParameterCollectionFromJson(json);
+}
+
+@freezed
 class ServiceActionParameter with _$ServiceActionParameter {
   const ServiceActionParameter._();
 
@@ -19,6 +32,18 @@ class ServiceActionParameter with _$ServiceActionParameter {
 
   factory ServiceActionParameter.fromJson(Map<String, dynamic> json) =>
       _$ServiceActionParameterFromJson(json);
+}
+
+@freezed
+class ServiceActionModelCollection with _$ServiceActionModelCollection {
+  const ServiceActionModelCollection._();
+
+  const factory ServiceActionModelCollection(
+    List<ServiceActionModel> serviceActionList,
+  ) = _ServiceActionModelCollection;
+
+  factory ServiceActionModelCollection.fromJson(Map<String, dynamic> json) =>
+      _$ServiceActionModelCollectionFromJson(json);
 }
 
 @freezed

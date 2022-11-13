@@ -2,6 +2,7 @@ import 'package:area/src/presentation/navbar/area_list/area_list_page.dart';
 import 'package:area/src/presentation/navbar/navbar_page.dart';
 import 'package:area/src/presentation/navbar/new_area/new_area_page.dart';
 import "package:flutter/material.dart";
+import '../controllers/short_service_list_controller.dart';
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 

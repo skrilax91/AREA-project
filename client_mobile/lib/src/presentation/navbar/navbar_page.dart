@@ -37,7 +37,9 @@ class NavBarPage extends ConsumerWidget {
       body: pages[currentPage.index],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentPage.index,
-        onTap: (i) => ref.read(routerProvider).go(routes[i]),
+        onTap: (i) {
+          ref.read(routerProvider).go(routes[i]);
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.list),

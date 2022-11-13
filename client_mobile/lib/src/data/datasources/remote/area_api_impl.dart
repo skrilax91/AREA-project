@@ -44,12 +44,38 @@ class AreaApiImpl implements AreaApi {
   }
 
   @override
-  Future<List<ShortServiceModel>> getServices() async {
+  Future<List<ShortService>> getServices() async {
     try {
       final json = await _get("/services");
-      return ShortServiceModelCollection.fromJson(json)
-          .shortServiceModelCollection;
+      return ShortServiceModelCollection.fromJson(json).toEntity();
     } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<Service> getService(String uid) async {
+    try {
+      final json = await _get("/services/$uid");
+      return Service.fromJson(json);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> createArea({
+    required String token,
+    required AreaModel area,
+  }) async {
+    try {
+      await _post(
+        "/area",
+        token: token,
+        query: area.toJson(),
+      );
+    } catch (e) {
+      print(e);
       rethrow;
     }
   }

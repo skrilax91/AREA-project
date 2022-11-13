@@ -1,3 +1,4 @@
+import 'package:area/src/domain/entities/area.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part "area_model.freezed.dart";
@@ -56,7 +57,7 @@ class AreaConfigModel with _$AreaConfigModel {
 }
 
 @freezed
-class AreaModel with _$AreaModel {
+class AreaModel extends AreaEntity with _$AreaModel {
   const AreaModel._();
 
   const factory AreaModel({

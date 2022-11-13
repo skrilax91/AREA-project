@@ -20,10 +20,8 @@ class ShortServiceListController
     if (result.type == ResultType.value) {
       state =
           LoadedShortServiceListState(shortServiceList: result.requireValue);
-      print("Emitted Loaded");
     } else {
       state = ErrorShortServiceListState(error: result.requireError.toString());
-      print("Emitted Error");
     }
   }
 }

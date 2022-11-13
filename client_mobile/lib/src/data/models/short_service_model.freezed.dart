@@ -21,6 +21,7 @@ ShortServiceModelCollection _$ShortServiceModelCollectionFromJson(
 
 /// @nodoc
 mixin _$ShortServiceModelCollection {
+  @JsonKey(name: 'services')
   List<ShortServiceModel> get shortServiceModelCollection =>
       throw _privateConstructorUsedError;
 
@@ -38,7 +39,9 @@ abstract class $ShortServiceModelCollectionCopyWith<$Res> {
       _$ShortServiceModelCollectionCopyWithImpl<$Res,
           ShortServiceModelCollection>;
   @useResult
-  $Res call({List<ShortServiceModel> shortServiceModelCollection});
+  $Res call(
+      {@JsonKey(name: 'services')
+          List<ShortServiceModel> shortServiceModelCollection});
 }
 
 /// @nodoc
@@ -75,7 +78,9 @@ abstract class _$$_ShortServiceModelCollectionCopyWith<$Res>
       __$$_ShortServiceModelCollectionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<ShortServiceModel> shortServiceModelCollection});
+  $Res call(
+      {@JsonKey(name: 'services')
+          List<ShortServiceModel> shortServiceModelCollection});
 }
 
 /// @nodoc
@@ -94,7 +99,7 @@ class __$$_ShortServiceModelCollectionCopyWithImpl<$Res>
     Object? shortServiceModelCollection = null,
   }) {
     return _then(_$_ShortServiceModelCollection(
-      shortServiceModelCollection: null == shortServiceModelCollection
+      null == shortServiceModelCollection
           ? _value._shortServiceModelCollection
           : shortServiceModelCollection // ignore: cast_nullable_to_non_nullable
               as List<ShortServiceModel>,
@@ -106,7 +111,8 @@ class __$$_ShortServiceModelCollectionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ShortServiceModelCollection extends _ShortServiceModelCollection {
   const _$_ShortServiceModelCollection(
-      {required final List<ShortServiceModel> shortServiceModelCollection})
+      @JsonKey(name: 'services')
+          final List<ShortServiceModel> shortServiceModelCollection)
       : _shortServiceModelCollection = shortServiceModelCollection,
         super._();
 
@@ -115,6 +121,7 @@ class _$_ShortServiceModelCollection extends _ShortServiceModelCollection {
 
   final List<ShortServiceModel> _shortServiceModelCollection;
   @override
+  @JsonKey(name: 'services')
   List<ShortServiceModel> get shortServiceModelCollection {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_shortServiceModelCollection);
@@ -158,14 +165,16 @@ class _$_ShortServiceModelCollection extends _ShortServiceModelCollection {
 abstract class _ShortServiceModelCollection
     extends ShortServiceModelCollection {
   const factory _ShortServiceModelCollection(
-      {required final List<ShortServiceModel>
-          shortServiceModelCollection}) = _$_ShortServiceModelCollection;
+          @JsonKey(name: 'services')
+              final List<ShortServiceModel> shortServiceModelCollection) =
+      _$_ShortServiceModelCollection;
   const _ShortServiceModelCollection._() : super._();
 
   factory _ShortServiceModelCollection.fromJson(Map<String, dynamic> json) =
       _$_ShortServiceModelCollection.fromJson;
 
   @override
+  @JsonKey(name: 'services')
   List<ShortServiceModel> get shortServiceModelCollection;
   @override
   @JsonKey(ignore: true)

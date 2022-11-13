@@ -44,11 +44,10 @@ class AreaApiImpl implements AreaApi {
   }
 
   @override
-  Future<List<ShortServiceModel>> getServices() async {
+  Future<List<ShortService>> getServices() async {
     try {
       final json = await _get("/services");
-      return ShortServiceModelCollection.fromJson(json)
-          .shortServiceModelCollection;
+      return ShortServiceModelCollection.fromJson(json).toEntity();
     } catch (e) {
       rethrow;
     }

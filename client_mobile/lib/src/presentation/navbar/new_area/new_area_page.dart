@@ -1,35 +1,8 @@
-import 'package:area/src/controllers/short_service_list_controller.dart';
-import 'package:area/src/controllers/short_service_list_state.dart';
+import 'package:area/src/domain/entities/short_service.dart';
+import 'package:area/src/presentation/controllers/new_area_form_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-class ServiceList extends ConsumerWidget {
-  const ServiceList({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(shortServiceListControllerProvider);
-
-    if (state is LoadedShortServiceListState) {
-      final services = state.shortServiceList;
-      return ListView.builder(
-        itemBuilder: (context, index) {
-          return Text(services[index].name);
-        },
-      );
-    } else if (state is LoadingShortServiceListState) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          CircularProgressIndicator(),
-        ],
-      );
-    } else if (state is ErrorShortServiceListState) {
-      return Text("Error : ${state.error}");
-    }
-    return const Text("wtf");
-  }
-}
+import 'services_dropdown.dart';
 
 class NewAreaPage extends ConsumerWidget {
   const NewAreaPage({super.key});
@@ -38,8 +11,45 @@ class NewAreaPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.read(shortServiceListControllerProvider.notifier).get();
+    final formState = ref.watch(newAreaFormControllerProvider);
+    final controller = ref.read(newAreaFormControllerProvider.notifier);
+    final form = formState.value;
 
-    return const ServiceList();
+    if (formState.isLoading || form == null) {
+      return const CircularProgressIndicator();
+    } else {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(),
+              borderRadius: BorderRadius.all(Radius.circular(3.0)),
+            ),
+            child: Column(
+              children: [
+                ServiceDropdown(
+                  onChanged: controller.selectTrigger,
+                  value: form.selectedTrigger,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 16.0,
+          ),
+          Container(
+            child: Column(
+              children: [
+                ServiceDropdown(
+                  onChanged: controller.selectAction,
+                  value: form.selectedAction,
+                ),
+              ],
+            ),
+          ),
+        ],
+      );
+    }
   }
 }

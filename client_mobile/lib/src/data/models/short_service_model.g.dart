@@ -9,16 +9,15 @@ part of 'short_service_model.dart';
 _$_ShortServiceModelCollection _$$_ShortServiceModelCollectionFromJson(
         Map<String, dynamic> json) =>
     _$_ShortServiceModelCollection(
-      shortServiceModelCollection:
-          (json['shortServiceModelCollection'] as List<dynamic>)
-              .map((e) => ShortServiceModel.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      (json['services'] as List<dynamic>)
+          .map((e) => ShortServiceModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_ShortServiceModelCollectionToJson(
         _$_ShortServiceModelCollection instance) =>
     <String, dynamic>{
-      'shortServiceModelCollection':
+      'services':
           instance.shortServiceModelCollection.map((e) => e.toJson()).toList(),
     };
 

@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../domain/entities/short_service.dart';
+
 part "short_service_model.freezed.dart";
 part "short_service_model.g.dart";
 
@@ -7,12 +9,17 @@ part "short_service_model.g.dart";
 class ShortServiceModelCollection with _$ShortServiceModelCollection {
   const ShortServiceModelCollection._();
 
-  const factory ShortServiceModelCollection({
-    required List<ShortServiceModel> shortServiceModelCollection,
-  }) = _ShortServiceModelCollection;
+  const factory ShortServiceModelCollection(
+    @JsonKey(name: 'services')
+        List<ShortServiceModel> shortServiceModelCollection,
+  ) = _ShortServiceModelCollection;
 
   factory ShortServiceModelCollection.fromJson(Map<String, dynamic> json) =>
       _$ShortServiceModelCollectionFromJson(json);
+
+  List<ShortService> toEntity() {
+    return shortServiceModelCollection.map((e) => e.toEntity()).toList();
+  }
 }
 
 @freezed
@@ -27,4 +34,12 @@ class ShortServiceModel with _$ShortServiceModel {
 
   factory ShortServiceModel.fromJson(Map<String, dynamic> json) =>
       _$ShortServiceModelFromJson(json);
+
+  ShortService toEntity() {
+    return ShortService(
+      uid: uid,
+      name: name,
+      description: description,
+    );
+  }
 }

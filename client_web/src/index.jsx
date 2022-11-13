@@ -17,17 +17,17 @@ import Settings from './pages/Settings/Settings';
 import reportWebVitals from "./reportWebVitals";
 import {createRoot} from "react-dom/client";
 
-function Protected({isLoggedIn, element}) {
+function Protected({isLoggedIn, prop}) {
     return (
         <>
-            {(isLoggedIn === true) ? (element) : (<NoMatch/>)}
+            {(isLoggedIn === true) ? (prop) : (<NoMatch/>)}
         </>
     );
 }
 
 
 function App() {
-    const [isConnected, setIsConnected] = useState(false);
+    const [isConnected, setIsConnected] = useState(localStorage.getItem('token') !== null);
 
     useEffect(() => {
         function checkUserData() {
@@ -52,8 +52,8 @@ function App() {
                 <Route index element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
-                <Route path="/connected" element={<Protected isLoggedIn={isConnected}><Connected/></Protected>}/>
-                <Route path="/service" element={<Protected isLoggedIn={isConnected}><Service/></Protected>}/>
+                <Route path="/connected" element={<Protected isLoggedIn={isConnected} prop={<Connected/>}/>}/>
+                <Route path="/service" element={<Protected isLoggedIn={isConnected} prop={<Service/>}/>}/>
                 <Route path="/logout" element={<Logout/>}/>
                 <Route path="/explore" element={<Explore/>}/>
                 <Route path="/dev" element={<Developers/>}/>

@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import loginRequest from "./login"
-
+import { setSessionStorageToken } from "../../services/manageConnection";
 import style from "./login.module.css";
 import {useNavigate} from "react-router-dom";
+
 
 function Content() {
     const [message, setMessage] = useState("");
@@ -21,7 +22,7 @@ function Content() {
                     setMessage("Error : " + error);
                     return;
                 }
-                localStorage.setItem("user", JSON.stringify(data));
+                setSessionStorageToken(data.token);
                 navigate("/connected");
             });
     }
@@ -40,7 +41,7 @@ function Content() {
         </section>);
 }
 
-function Login({setIsLoggedIn}) {
+function Login() {
     return (<div>
         <Content/>
     </div>);

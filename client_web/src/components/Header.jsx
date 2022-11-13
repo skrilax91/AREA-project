@@ -32,11 +32,11 @@ function AuthenticatedButtons() {
     );
 }
 
-function Header(isAuthenticated) {
+function Header({isConnected}) {
     return (
         <header>
             <Logo/>
-            {isAuthenticated ? <AuthenticatedButtons/> : <NonAuthenticatedButtons/>}
+            {isConnected ? <AuthenticatedButtons/> : <NonAuthenticatedButtons/>}
         </header>
     );
 }

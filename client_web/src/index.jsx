@@ -17,16 +17,6 @@ import Settings from './pages/Settings/Settings';
 import reportWebVitals from "./reportWebVitals";
 import {createRoot} from "react-dom/client";
 
-//function setToken(userToken) {
-//    sessionStorage.setItem('token', JSON.stringify(userToken));
-//}
-//
-//function getToken() {
-//    const tokenString = sessionStorage.getItem('token');
-//    const userToken = JSON.parse(tokenString);
-//    return userToken?.token
-//}
-
 function Protected({isLoggedIn, element}) {
     return (
         <>
@@ -37,22 +27,33 @@ function Protected({isLoggedIn, element}) {
 
 
 function App() {
-    const [Token, setToken] = useState(false);
+    const [isConnected, setIsConnected] = useState(false);
+
     useEffect(() => {
+        function checkUserData() {
+            const item = localStorage.getItem('token');
+            console.log(item + " is the token");
+            if (item) {
+                setIsConnected(true);
+            } else {
+                setIsConnected(false);
+            }
+        }
+        window.addEventListener('token', checkUserData)
         return () => {
-            setToken(localStorage.getItem("user") !== null);
-        };
-    }, [localStorage.getItem("user")]);
+            window.removeEventListener('token', checkUserData)
+        }
+    }, [])
 
     return (
         <>
-            <Header isAuthenticated={Token}/>
+            <Header isConnected={isConnected}/>
             <Routes>
                 <Route index element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
-                <Route path="/connected" element={<Protected isLoggedIn={Token}><Connected/></Protected>}/>
-                <Route path="/service" element={<Protected isLoggedIn={Token}><Service/></Protected>}/>
+                <Route path="/connected" element={<Protected isLoggedIn={isConnected}><Connected/></Protected>}/>
+                <Route path="/service" element={<Protected isLoggedIn={isConnected}><Service/></Protected>}/>
                 <Route path="/logout" element={<Logout/>}/>
                 <Route path="/explore" element={<Explore/>}/>
                 <Route path="/dev" element={<Developers/>}/>

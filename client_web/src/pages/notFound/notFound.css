@@ -1,0 +1,11 @@
+.errors-layout .message {
+    font-size: 48px;
+    margin: auto;
+    max-width: 85%;
+    position: relative;
+    text-align: center;
+}
+
+.errors-layout .error-image {
+    max-width: 70%;
+}

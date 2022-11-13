@@ -35,7 +35,7 @@ run `npm start` to run the sample.
 ## Webhook Subscription Creation
 Once the server is up and running you can send a POST to `http://localhost:3000/createWebhook/<twitchID>` to create a new *channel.follow* webhook. 
 
-You can modify the *createWebHookBody* payload in the index.jsx to try out other webhooks as well.
+You can modify the *createWebHookBody* payload in the Index.jsx to try out other webhooks as well.
 
 In order to create a new webhook subscription you'll need to send a POST request to the https://api.twitch.tv/helix/eventsub/subscriptions endpoint.
 

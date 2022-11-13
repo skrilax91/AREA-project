@@ -1,9 +1,9 @@
 const Service = require("../prototype/Service");
 const axios = require('axios');
-const MessageAction = require("../Discord/MessageAction");
+const MessageAction = require("../Telegram/MessageAction");
 
 
-class DiscordService extends Service {
+class TelegramService extends Service {
     static uid = "service_telegram";
     static name = "Service Telegram";
 

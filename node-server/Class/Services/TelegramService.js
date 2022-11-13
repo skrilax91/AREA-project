@@ -19,7 +19,7 @@ class TelegramService extends Service {
         if (!super.paramsValidator())
             return false;
 
-        let pattern = TelegramService.getParamsPattern();
+        let pattern = this.constructor.getParamsPattern();
 
         pattern.forEach(el => {
             if (!this.params[el.name])
@@ -43,27 +43,16 @@ class TelegramService extends Service {
     }
 
     static getParamsPattern() {
-        return [
-            {
-                name: "token",
-                type: "string",
-                description: "The token of the Telegram bot"
-            },
-            {
-                name: "chat_id",
-                type: "string",
-                description: "The channel ID"
-            }
-        ];
+        return [];
     }
 
     async enableAction(uid, params = {}) {
         console.log("Enabling action...");
         if (this.getAction(uid))
             return false;
-
+        
         console.log("Getting action proto...");
-        let proto = TelegramService.getActionPrototype(uid);
+        let proto = this.constructor.getActionPrototype(uid);
 
         if (!proto) {
             console.log("Can't find prototype");
@@ -71,7 +60,7 @@ class TelegramService extends Service {
         }
 
         let action = new proto(params, this);
-
+        
         this.actions.push(action);
         console.log("================ACTION========================")
         console.log(this.actions);

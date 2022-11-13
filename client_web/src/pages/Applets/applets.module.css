@@ -6,6 +6,19 @@ body {
 header .headerLi, header .headerUl, header a {
     color: white !important;
 }
+.noApplets {
+    color: white;
+    background-image: url('https://web-assets.ifttt.com/packs/media/prosumer/svg--home--circle-8e9b206299f7a3ea3488.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding-top: 12%;
+    padding-bottom: 50%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.7rem;
+    text-shadow: 0 0 10px rgba(34,34,34,.6),0 0 10px rgba(34,34,34,.6),0 0 10px rgba(34,34,34,.6);
+}
 
 
 .appletsSection {
@@ -37,8 +50,7 @@ header .headerLi, header .headerUl, header a {
 }
 
 .appletsContent h1 {
-    text-align: left;
-    font-size: 2.5rem;
-    font-weight: 200;
+    font-size: 3.5rem;
+    font-weight: 800;
     line-height: 4.44rem;
 }

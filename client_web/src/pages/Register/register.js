@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom';
-
 export default function registerRequest(email, password) {
     return fetch("http://localhost:8080/api/auth/register", {
         method: "POST",

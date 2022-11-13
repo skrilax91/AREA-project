@@ -1,7 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
-
-import Header from "../../components/Header";
 import style from "./applets.module.css"
 
 function Content() {

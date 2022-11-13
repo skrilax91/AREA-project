@@ -3,7 +3,6 @@ import style from "./settings.module.css"
 import settingsRequest from "./settings";
 
 function Content() {
-
     const [data, setData] = useState({});
 
     useEffect(() => {
@@ -18,7 +17,6 @@ function Content() {
                 setData(data);
             });
     }, []);
-    console.log(data);
 
     return (
         <section className={style.settingsSection}>

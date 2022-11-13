@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import settingsRequest from "../Settings/settings";
+import servicesRequest from "./services";
+
+
 
 function Service() {
     const data = [{
@@ -8,6 +12,7 @@ function Service() {
         service: "google-calendar",
         name: "Google Calendar",
     }];
+
 
     return (<div>
         {data.map(function (d, idx) {

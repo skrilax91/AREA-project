@@ -17,7 +17,7 @@ const AreaManager = require('./Services/AreaManager');
 const cors = require("cors");
 var server = express();
 
-server.use(cors());
+server.use(cors({origin: '*'}));
 
 var http = require('http').createServer( server );
 
@@ -55,7 +55,7 @@ server.use( ( req, res, next ) => {
 
     err.status = 404;
     err.msg = "La page que vous avez demandée n'existe pas.";
-    
+
     next( err )
 })
 

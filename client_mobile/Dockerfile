@@ -47,6 +47,7 @@ RUN yes "y" | "${ANDROID_TOOLS_ROOT}/cmdline-tools/latest/bin/sdkmanager" "platf
 RUN yes "y" | "${ANDROID_TOOLS_ROOT}/cmdline-tools/latest/bin/sdkmanager" "patcher;v4" > /dev/null
 RUN yes "y" | "${ANDROID_TOOLS_ROOT}/cmdline-tools/latest/bin/sdkmanager" "build-tools;30.0.3" > /dev/null
 RUN yes "y" | "${ANDROID_TOOLS_ROOT}/cmdline-tools/latest/bin/sdkmanager" "platforms;android-31" > /dev/null
+RUN yes "y" | "${ANDROID_TOOLS_ROOT}/cmdline-tools/latest/bin/sdkmanager" "platforms;android-33" > /dev/null
 
 RUN rm "${ANDROID_SDK_ARCHIVE}"
 
@@ -56,7 +57,7 @@ ENV PATH="${ANDROID_TOOLS_ROOT}/cmdline-tools/latest/bin:${PATH}"
 # Install Flutter
 ENV FLUTTER_HOME="/opt/flutter"
 
-ENV FLUTTER_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.3.3-stable.tar.xz"
+ENV FLUTTER_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.3.8-stable.tar.xz"
 RUN mkdir -p "${FLUTTER_HOME}"
 ENV FLUTTER_ARCHIVE="${FLUTTER_HOME}/archive"
 RUN wget --progress=dot:giga "${FLUTTER_URL}" -O "${FLUTTER_ARCHIVE}"
@@ -72,4 +73,4 @@ ENV PATH="${FLUTTER_HOME}/bin:${PATH}"
 RUN mkdir -p "/project"
 WORKDIR "/project"
 
-CMD ["flutter", "build", "apk"]
+CMD ["./build.sh"]

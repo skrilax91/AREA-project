@@ -3,7 +3,6 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
-import Connected from "./pages/Connected/connected";
 import Register from "./pages/Register/Register";
 import Header from "./components/Header";
 import NoMatch from "./pages/notFound/notFound";
@@ -51,7 +50,6 @@ function App() {
                 <Route index element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
-                <Route path="/connected" element={<Protected isLoggedIn={isConnected} perm={<Connected/>}/>}/>
                 <Route path="/logout" element={<Protected isLoggedIn={isConnected} perm={<Logout/>}/>}/>
                 <Route path="/explore" element={<Explore/>}/>
                 <Route path="/dev" element={<Developers/>}/>

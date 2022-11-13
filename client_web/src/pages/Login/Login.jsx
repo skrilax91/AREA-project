@@ -23,7 +23,7 @@ function Content() {
                     return;
                 }
                 setSessionStorageToken(data.token);
-                navigate("/connected");
+                navigate("/applets");
             });
     }
 

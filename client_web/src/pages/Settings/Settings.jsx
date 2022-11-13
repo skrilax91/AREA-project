@@ -3,7 +3,7 @@ import style from "./settings.module.css"
 import settingsRequest from "./settings";
 
 function Content() {
-    const [data, setData] = useState({});
+    const [data, setData] = useState({createdAt : "N/A", email : "N/A"});
 
     useEffect(() => {
         settingsRequest()

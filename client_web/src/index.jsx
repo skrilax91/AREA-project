@@ -23,14 +23,12 @@ function Protected({isLoggedIn, perm, noPerm = <NoMatch/>}) {
     );
 }
 
-
 function App() {
     const [isConnected, setIsConnected] = useState(localStorage.getItem('token') !== null);
 
     useEffect(() => {
         function checkUserData() {
             const item = localStorage.getItem('token');
-            console.log(item + " is the token");
             if (item) {
                 setIsConnected(true);
             } else {

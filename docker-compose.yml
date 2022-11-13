@@ -11,15 +11,16 @@ services:
   client_web:
     build: client_web
     container_name: client_web
+    env_file: ./client_web/.env
+    depends_on:
+      - client_mobile
+      - server
     volumes:
       - "./client_web:/app"
       - "/app/node_modules"
     ports:
-      - "3000:3000"
+      - "8081:3000"
     restart: always
-    depends_on:
-      - client_mobile
-      - server
 
   db:
     image: mysql

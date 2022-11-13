@@ -4,7 +4,6 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Connected from "./pages/Connected/connected";
-import Service from "./pages/Services/Services";
 import Register from "./pages/Register/Register";
 import Header from "./components/Header";
 import NoMatch from "./pages/notFound/notFound";
@@ -17,10 +16,10 @@ import Settings from './pages/Settings/Settings';
 import reportWebVitals from "./reportWebVitals";
 import {createRoot} from "react-dom/client";
 
-function Protected({isLoggedIn, prop, notFound: noPerm = <NoMatch/>}) {
+function Protected({isLoggedIn, perm, noPerm = <NoMatch/>}) {
     return (
         <>
-            {(isLoggedIn === true) ? (prop) : (noPerm)}
+            {(isLoggedIn === true) ? (perm) : (noPerm)}
         </>
     );
 }
@@ -49,16 +48,16 @@ function App() {
         <>
             <Header isConnected={isConnected}/>
             <Routes>
-                <Route index path="/" element={<Protected isLoggedIn={isConnected} prop={<Connected/>} notFound={<Home/>}/>}/>
+                <Route index element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
-                <Route path="/service" element={<Protected isLoggedIn={isConnected} prop={<Service/>}/>}/>
-                <Route path="/logout" element={<Logout/>}/>
+                <Route path="/connected" element={<Protected isLoggedIn={isConnected} perm={<Connected/>}/>}/>
+                <Route path="/logout" element={<Protected isLoggedIn={isConnected} perm={<Logout/>}/>}/>
                 <Route path="/explore" element={<Explore/>}/>
                 <Route path="/dev" element={<Developers/>}/>
                 <Route path="/applets" element={<Applets/>}/>
                 <Route path="/create" element={<Create/>}/>
-                <Route path="/settings" element={<Settings/>}/>
+                <Route path="/settings" element={<Protected isLoggedIn={isConnected} perm={<Settings/>}/>}/>
                 <Route path="*" element={<NoMatch/>}/>
             </Routes>
         </>

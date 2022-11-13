@@ -9,7 +9,7 @@ export default function NoMatch() {
                  className="error-image"/>
         </a>
 
-        <h1>The requested page or file does not exist. Explore <Link to="/home">Applets</Link> instead!
+        <h1>The requested page or file does not exist. Explore <Link to="/applets">Applets</Link> instead!
         </h1>
     </div>);
 }

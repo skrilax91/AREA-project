@@ -11,8 +11,6 @@ export function setSessionStorageToken(userToken) {
 }
 
 export function getSessionStorageToken() {
-    let item = localStorage.getItem('token');
-    window.dispatchEvent(new Event('token'));
-    return item;
+    return localStorage.getItem('token');
 }
 

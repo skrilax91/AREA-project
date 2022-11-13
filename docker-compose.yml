@@ -21,9 +21,6 @@ services:
     ports:
       - "8081:3000"
     restart: always
-    depends_on:
-      - client_mobile
-      - server
 
   db:
     image: mysql

@@ -17,10 +17,10 @@ import Settings from './pages/Settings/Settings';
 import reportWebVitals from "./reportWebVitals";
 import {createRoot} from "react-dom/client";
 
-function Protected({isLoggedIn, prop}) {
+function Protected({isLoggedIn, prop, notFound: noPerm = <NoMatch/>}) {
     return (
         <>
-            {(isLoggedIn === true) ? (prop) : (<NoMatch/>)}
+            {(isLoggedIn === true) ? (prop) : (noPerm)}
         </>
     );
 }
@@ -49,10 +49,9 @@ function App() {
         <>
             <Header isConnected={isConnected}/>
             <Routes>
-                <Route index element={<Home/>}/>
+                <Route index path="/" element={<Protected isLoggedIn={isConnected} prop={<Connected/>} notFound={<Home/>}/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
-                <Route path="/connected" element={<Protected isLoggedIn={isConnected} prop={<Connected/>}/>}/>
                 <Route path="/service" element={<Protected isLoggedIn={isConnected} prop={<Service/>}/>}/>
                 <Route path="/logout" element={<Logout/>}/>
                 <Route path="/explore" element={<Explore/>}/>

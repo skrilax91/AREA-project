@@ -54,8 +54,8 @@ Map<String, dynamic> _$$_AreaConfigServiceModelToJson(
         _$_AreaConfigServiceModel instance) =>
     <String, dynamic>{
       'uid': instance.uid,
-      'triggers': instance.triggers.map((e) => e.toJson()).toList(),
-      'actions': instance.actions.map((e) => e.toJson()).toList(),
+      'triggers': instance.triggers,
+      'actions': instance.actions,
     };
 
 _$_AreaConfigModel _$$_AreaConfigModelFromJson(Map<String, dynamic> json) =>
@@ -68,7 +68,7 @@ _$_AreaConfigModel _$$_AreaConfigModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_AreaConfigModelToJson(_$_AreaConfigModel instance) =>
     <String, dynamic>{
-      'services': instance.services.map((e) => e.toJson()).toList(),
+      'services': instance.services,
     };
 
 _$_AreaModel _$$_AreaModelFromJson(Map<String, dynamic> json) => _$_AreaModel(
@@ -81,5 +81,5 @@ Map<String, dynamic> _$$_AreaModelToJson(_$_AreaModel instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
-      'config': instance.config.toJson(),
+      'config': instance.config,
     };

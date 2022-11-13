@@ -14,7 +14,7 @@ class AuthInfoController extends AsyncNotifier<BaseAuthInfoState> {
 
   @override
   FutureOr<BaseAuthInfoState> build() {
-    // return const AuthInfoState(isLoading: true);
+    return const AuthInfoState(isLoading: true);
     return LoggedAuthInfoState(
       authInfo: AuthInfo(
         token: "bWMCUWsTUUhx1JpAI55jSIm4m1JEdqXkN2aWu9vj",

@@ -14,6 +14,169 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ServiceActionParameterCollection _$ServiceActionParameterCollectionFromJson(
+    Map<String, dynamic> json) {
+  return _ServiceActionParameterCollection.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ServiceActionParameterCollection {
+  List<ServiceActionParameter> get serviceActionParameterList =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ServiceActionParameterCollectionCopyWith<ServiceActionParameterCollection>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ServiceActionParameterCollectionCopyWith<$Res> {
+  factory $ServiceActionParameterCollectionCopyWith(
+          ServiceActionParameterCollection value,
+          $Res Function(ServiceActionParameterCollection) then) =
+      _$ServiceActionParameterCollectionCopyWithImpl<$Res,
+          ServiceActionParameterCollection>;
+  @useResult
+  $Res call({List<ServiceActionParameter> serviceActionParameterList});
+}
+
+/// @nodoc
+class _$ServiceActionParameterCollectionCopyWithImpl<$Res,
+        $Val extends ServiceActionParameterCollection>
+    implements $ServiceActionParameterCollectionCopyWith<$Res> {
+  _$ServiceActionParameterCollectionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? serviceActionParameterList = null,
+  }) {
+    return _then(_value.copyWith(
+      serviceActionParameterList: null == serviceActionParameterList
+          ? _value.serviceActionParameterList
+          : serviceActionParameterList // ignore: cast_nullable_to_non_nullable
+              as List<ServiceActionParameter>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ServiceActionParameterCollectionCopyWith<$Res>
+    implements $ServiceActionParameterCollectionCopyWith<$Res> {
+  factory _$$_ServiceActionParameterCollectionCopyWith(
+          _$_ServiceActionParameterCollection value,
+          $Res Function(_$_ServiceActionParameterCollection) then) =
+      __$$_ServiceActionParameterCollectionCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<ServiceActionParameter> serviceActionParameterList});
+}
+
+/// @nodoc
+class __$$_ServiceActionParameterCollectionCopyWithImpl<$Res>
+    extends _$ServiceActionParameterCollectionCopyWithImpl<$Res,
+        _$_ServiceActionParameterCollection>
+    implements _$$_ServiceActionParameterCollectionCopyWith<$Res> {
+  __$$_ServiceActionParameterCollectionCopyWithImpl(
+      _$_ServiceActionParameterCollection _value,
+      $Res Function(_$_ServiceActionParameterCollection) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? serviceActionParameterList = null,
+  }) {
+    return _then(_$_ServiceActionParameterCollection(
+      null == serviceActionParameterList
+          ? _value._serviceActionParameterList
+          : serviceActionParameterList // ignore: cast_nullable_to_non_nullable
+              as List<ServiceActionParameter>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_ServiceActionParameterCollection
+    extends _ServiceActionParameterCollection {
+  const _$_ServiceActionParameterCollection(
+      final List<ServiceActionParameter> serviceActionParameterList)
+      : _serviceActionParameterList = serviceActionParameterList,
+        super._();
+
+  factory _$_ServiceActionParameterCollection.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ServiceActionParameterCollectionFromJson(json);
+
+  final List<ServiceActionParameter> _serviceActionParameterList;
+  @override
+  List<ServiceActionParameter> get serviceActionParameterList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_serviceActionParameterList);
+  }
+
+  @override
+  String toString() {
+    return 'ServiceActionParameterCollection(serviceActionParameterList: $serviceActionParameterList)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ServiceActionParameterCollection &&
+            const DeepCollectionEquality().equals(
+                other._serviceActionParameterList,
+                _serviceActionParameterList));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_serviceActionParameterList));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ServiceActionParameterCollectionCopyWith<
+          _$_ServiceActionParameterCollection>
+      get copyWith => __$$_ServiceActionParameterCollectionCopyWithImpl<
+          _$_ServiceActionParameterCollection>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ServiceActionParameterCollectionToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ServiceActionParameterCollection
+    extends ServiceActionParameterCollection {
+  const factory _ServiceActionParameterCollection(
+          final List<ServiceActionParameter> serviceActionParameterList) =
+      _$_ServiceActionParameterCollection;
+  const _ServiceActionParameterCollection._() : super._();
+
+  factory _ServiceActionParameterCollection.fromJson(
+      Map<String, dynamic> json) = _$_ServiceActionParameterCollection.fromJson;
+
+  @override
+  List<ServiceActionParameter> get serviceActionParameterList;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ServiceActionParameterCollectionCopyWith<
+          _$_ServiceActionParameterCollection>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 ServiceActionParameter _$ServiceActionParameterFromJson(
     Map<String, dynamic> json) {
   return _ServiceActionParameter.fromJson(json);
@@ -256,6 +419,164 @@ abstract class _ServiceActionParameter extends ServiceActionParameter {
   @JsonKey(ignore: true)
   _$$_ServiceActionParameterCopyWith<_$_ServiceActionParameter> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+ServiceActionModelCollection _$ServiceActionModelCollectionFromJson(
+    Map<String, dynamic> json) {
+  return _ServiceActionModelCollection.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ServiceActionModelCollection {
+  List<ServiceActionModel> get serviceActionList =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ServiceActionModelCollectionCopyWith<ServiceActionModelCollection>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ServiceActionModelCollectionCopyWith<$Res> {
+  factory $ServiceActionModelCollectionCopyWith(
+          ServiceActionModelCollection value,
+          $Res Function(ServiceActionModelCollection) then) =
+      _$ServiceActionModelCollectionCopyWithImpl<$Res,
+          ServiceActionModelCollection>;
+  @useResult
+  $Res call({List<ServiceActionModel> serviceActionList});
+}
+
+/// @nodoc
+class _$ServiceActionModelCollectionCopyWithImpl<$Res,
+        $Val extends ServiceActionModelCollection>
+    implements $ServiceActionModelCollectionCopyWith<$Res> {
+  _$ServiceActionModelCollectionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? serviceActionList = null,
+  }) {
+    return _then(_value.copyWith(
+      serviceActionList: null == serviceActionList
+          ? _value.serviceActionList
+          : serviceActionList // ignore: cast_nullable_to_non_nullable
+              as List<ServiceActionModel>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ServiceActionModelCollectionCopyWith<$Res>
+    implements $ServiceActionModelCollectionCopyWith<$Res> {
+  factory _$$_ServiceActionModelCollectionCopyWith(
+          _$_ServiceActionModelCollection value,
+          $Res Function(_$_ServiceActionModelCollection) then) =
+      __$$_ServiceActionModelCollectionCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<ServiceActionModel> serviceActionList});
+}
+
+/// @nodoc
+class __$$_ServiceActionModelCollectionCopyWithImpl<$Res>
+    extends _$ServiceActionModelCollectionCopyWithImpl<$Res,
+        _$_ServiceActionModelCollection>
+    implements _$$_ServiceActionModelCollectionCopyWith<$Res> {
+  __$$_ServiceActionModelCollectionCopyWithImpl(
+      _$_ServiceActionModelCollection _value,
+      $Res Function(_$_ServiceActionModelCollection) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? serviceActionList = null,
+  }) {
+    return _then(_$_ServiceActionModelCollection(
+      null == serviceActionList
+          ? _value._serviceActionList
+          : serviceActionList // ignore: cast_nullable_to_non_nullable
+              as List<ServiceActionModel>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_ServiceActionModelCollection extends _ServiceActionModelCollection {
+  const _$_ServiceActionModelCollection(
+      final List<ServiceActionModel> serviceActionList)
+      : _serviceActionList = serviceActionList,
+        super._();
+
+  factory _$_ServiceActionModelCollection.fromJson(Map<String, dynamic> json) =>
+      _$$_ServiceActionModelCollectionFromJson(json);
+
+  final List<ServiceActionModel> _serviceActionList;
+  @override
+  List<ServiceActionModel> get serviceActionList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_serviceActionList);
+  }
+
+  @override
+  String toString() {
+    return 'ServiceActionModelCollection(serviceActionList: $serviceActionList)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ServiceActionModelCollection &&
+            const DeepCollectionEquality()
+                .equals(other._serviceActionList, _serviceActionList));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_serviceActionList));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ServiceActionModelCollectionCopyWith<_$_ServiceActionModelCollection>
+      get copyWith => __$$_ServiceActionModelCollectionCopyWithImpl<
+          _$_ServiceActionModelCollection>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ServiceActionModelCollectionToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ServiceActionModelCollection
+    extends ServiceActionModelCollection {
+  const factory _ServiceActionModelCollection(
+          final List<ServiceActionModel> serviceActionList) =
+      _$_ServiceActionModelCollection;
+  const _ServiceActionModelCollection._() : super._();
+
+  factory _ServiceActionModelCollection.fromJson(Map<String, dynamic> json) =
+      _$_ServiceActionModelCollection.fromJson;
+
+  @override
+  List<ServiceActionModel> get serviceActionList;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ServiceActionModelCollectionCopyWith<_$_ServiceActionModelCollection>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 ServiceActionModel _$ServiceActionModelFromJson(Map<String, dynamic> json) {

@@ -14,8 +14,8 @@ class Service with _$Service {
     required String uid,
     required String name,
     required String description,
-    required List<ServiceActionModel> actions,
-    required List<ServiceReaction> reactions,
+    required List<ServiceActionModel> triggers,
+    // required List<ServiceReaction> reactions,
   }) = _Service;
 
   factory Service.fromJson(Map<String, dynamic> json) =>

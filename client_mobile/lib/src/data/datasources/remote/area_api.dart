@@ -1,3 +1,5 @@
+import 'package:area/src/data/models/area_model.dart';
+import 'package:area/src/data/models/service.dart';
 import "package:dio/dio.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
@@ -22,6 +24,13 @@ abstract class AreaApi {
   });
 
   Future<List<ShortService>> getServices();
+
+  Future<Service> getService(String uid);
+
+  Future<void> createArea({
+    required String token,
+    required AreaModel area,
+  });
 }
 
 final areaApiProvider = Provider<AreaApi>((ref) {

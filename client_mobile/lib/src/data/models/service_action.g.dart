@@ -6,6 +6,21 @@ part of 'service_action.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$_ServiceActionParameterCollection
+    _$$_ServiceActionParameterCollectionFromJson(Map<String, dynamic> json) =>
+        _$_ServiceActionParameterCollection(
+          (json['serviceActionParameterList'] as List<dynamic>)
+              .map((e) =>
+                  ServiceActionParameter.fromJson(e as Map<String, dynamic>))
+              .toList(),
+        );
+
+Map<String, dynamic> _$$_ServiceActionParameterCollectionToJson(
+        _$_ServiceActionParameterCollection instance) =>
+    <String, dynamic>{
+      'serviceActionParameterList': instance.serviceActionParameterList,
+    };
+
 _$_ServiceActionParameter _$$_ServiceActionParameterFromJson(
         Map<String, dynamic> json) =>
     _$_ServiceActionParameter(
@@ -28,6 +43,20 @@ Map<String, dynamic> _$$_ServiceActionParameterToJson(
       'mutualized': instance.mutualized,
     };
 
+_$_ServiceActionModelCollection _$$_ServiceActionModelCollectionFromJson(
+        Map<String, dynamic> json) =>
+    _$_ServiceActionModelCollection(
+      (json['serviceActionList'] as List<dynamic>)
+          .map((e) => ServiceActionModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_ServiceActionModelCollectionToJson(
+        _$_ServiceActionModelCollection instance) =>
+    <String, dynamic>{
+      'serviceActionList': instance.serviceActionList,
+    };
+
 _$_ServiceActionModel _$$_ServiceActionModelFromJson(
         Map<String, dynamic> json) =>
     _$_ServiceActionModel(
@@ -46,5 +75,5 @@ Map<String, dynamic> _$$_ServiceActionModelToJson(
       'uid': instance.uid,
       'name': instance.name,
       'description': instance.description,
-      'params': instance.params.map((e) => e.toJson()).toList(),
+      'params': instance.params,
     };

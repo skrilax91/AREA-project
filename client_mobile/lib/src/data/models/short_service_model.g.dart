@@ -17,8 +17,7 @@ _$_ShortServiceModelCollection _$$_ShortServiceModelCollectionFromJson(
 Map<String, dynamic> _$$_ShortServiceModelCollectionToJson(
         _$_ShortServiceModelCollection instance) =>
     <String, dynamic>{
-      'services':
-          instance.shortServiceModelCollection.map((e) => e.toJson()).toList(),
+      'services': instance.shortServiceModelCollection,
     };
 
 _$_ShortServiceModel _$$_ShortServiceModelFromJson(Map<String, dynamic> json) =>

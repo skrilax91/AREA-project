@@ -23,8 +23,7 @@ mixin _$Service {
   String get uid => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  List<ServiceActionModel> get actions => throw _privateConstructorUsedError;
-  List<ServiceReaction> get reactions => throw _privateConstructorUsedError;
+  List<ServiceActionModel> get triggers => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,8 +39,7 @@ abstract class $ServiceCopyWith<$Res> {
       {String uid,
       String name,
       String description,
-      List<ServiceActionModel> actions,
-      List<ServiceReaction> reactions});
+      List<ServiceActionModel> triggers});
 }
 
 /// @nodoc
@@ -60,8 +58,7 @@ class _$ServiceCopyWithImpl<$Res, $Val extends Service>
     Object? uid = null,
     Object? name = null,
     Object? description = null,
-    Object? actions = null,
-    Object? reactions = null,
+    Object? triggers = null,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -76,14 +73,10 @@ class _$ServiceCopyWithImpl<$Res, $Val extends Service>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      actions: null == actions
-          ? _value.actions
-          : actions // ignore: cast_nullable_to_non_nullable
+      triggers: null == triggers
+          ? _value.triggers
+          : triggers // ignore: cast_nullable_to_non_nullable
               as List<ServiceActionModel>,
-      reactions: null == reactions
-          ? _value.reactions
-          : reactions // ignore: cast_nullable_to_non_nullable
-              as List<ServiceReaction>,
     ) as $Val);
   }
 }
@@ -99,8 +92,7 @@ abstract class _$$_ServiceCopyWith<$Res> implements $ServiceCopyWith<$Res> {
       {String uid,
       String name,
       String description,
-      List<ServiceActionModel> actions,
-      List<ServiceReaction> reactions});
+      List<ServiceActionModel> triggers});
 }
 
 /// @nodoc
@@ -116,8 +108,7 @@ class __$$_ServiceCopyWithImpl<$Res>
     Object? uid = null,
     Object? name = null,
     Object? description = null,
-    Object? actions = null,
-    Object? reactions = null,
+    Object? triggers = null,
   }) {
     return _then(_$_Service(
       uid: null == uid
@@ -132,14 +123,10 @@ class __$$_ServiceCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      actions: null == actions
-          ? _value._actions
-          : actions // ignore: cast_nullable_to_non_nullable
+      triggers: null == triggers
+          ? _value._triggers
+          : triggers // ignore: cast_nullable_to_non_nullable
               as List<ServiceActionModel>,
-      reactions: null == reactions
-          ? _value._reactions
-          : reactions // ignore: cast_nullable_to_non_nullable
-              as List<ServiceReaction>,
     ));
   }
 }
@@ -151,10 +138,8 @@ class _$_Service extends _Service {
       {required this.uid,
       required this.name,
       required this.description,
-      required final List<ServiceActionModel> actions,
-      required final List<ServiceReaction> reactions})
-      : _actions = actions,
-        _reactions = reactions,
+      required final List<ServiceActionModel> triggers})
+      : _triggers = triggers,
         super._();
 
   factory _$_Service.fromJson(Map<String, dynamic> json) =>
@@ -166,23 +151,16 @@ class _$_Service extends _Service {
   final String name;
   @override
   final String description;
-  final List<ServiceActionModel> _actions;
+  final List<ServiceActionModel> _triggers;
   @override
-  List<ServiceActionModel> get actions {
+  List<ServiceActionModel> get triggers {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_actions);
-  }
-
-  final List<ServiceReaction> _reactions;
-  @override
-  List<ServiceReaction> get reactions {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_reactions);
+    return EqualUnmodifiableListView(_triggers);
   }
 
   @override
   String toString() {
-    return 'Service(uid: $uid, name: $name, description: $description, actions: $actions, reactions: $reactions)';
+    return 'Service(uid: $uid, name: $name, description: $description, triggers: $triggers)';
   }
 
   @override
@@ -194,20 +172,13 @@ class _$_Service extends _Service {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality().equals(other._actions, _actions) &&
-            const DeepCollectionEquality()
-                .equals(other._reactions, _reactions));
+            const DeepCollectionEquality().equals(other._triggers, _triggers));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      uid,
-      name,
-      description,
-      const DeepCollectionEquality().hash(_actions),
-      const DeepCollectionEquality().hash(_reactions));
+  int get hashCode => Object.hash(runtimeType, uid, name, description,
+      const DeepCollectionEquality().hash(_triggers));
 
   @JsonKey(ignore: true)
   @override
@@ -228,8 +199,7 @@ abstract class _Service extends Service {
       {required final String uid,
       required final String name,
       required final String description,
-      required final List<ServiceActionModel> actions,
-      required final List<ServiceReaction> reactions}) = _$_Service;
+      required final List<ServiceActionModel> triggers}) = _$_Service;
   const _Service._() : super._();
 
   factory _Service.fromJson(Map<String, dynamic> json) = _$_Service.fromJson;
@@ -241,9 +211,7 @@ abstract class _Service extends Service {
   @override
   String get description;
   @override
-  List<ServiceActionModel> get actions;
-  @override
-  List<ServiceReaction> get reactions;
+  List<ServiceActionModel> get triggers;
   @override
   @JsonKey(ignore: true)
   _$$_ServiceCopyWith<_$_Service> get copyWith =>

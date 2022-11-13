@@ -1,33 +1,28 @@
 import React, {useEffect, useState} from 'react';
-import settingsRequest from "../Settings/settings";
 import servicesRequest from "./services";
+import Service from "../../components/Services";
 
-
-
-function Service() {
-    const data = [{
-        service: "twitch",
-        name: "Twitch",
-    }, {
-        service: "google-calendar",
-        name: "Google Calendar",
-    }];
-
-
-    return (<div>
-        {data.map(function (d, idx) {
-            return (<div key={idx} style={{backgroundColor: d.color}}>
-                <input type="checkbox" id={d.service}/><label htmlFor={d.service}>{d.name}</label>
-            </div>);
-        })}
-    </div>);
-}
 
 function Content() {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        servicesRequest()
+            .then(async response => {
+                const data = await response.json();
+                if (!response.ok) {
+                    const error = (data && data.message) || response.statusText;
+                    console.log(error);
+                    return;
+                }
+                setData(data.services);
+            });
+    }, []);
+
     return (<>
         <h1>Choose profile</h1>
         <form>
-            <Service/>
+            <Service data={data}/>
             <button type="submit">Set Profile</button>
         </form>
     </>);

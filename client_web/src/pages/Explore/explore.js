@@ -1,6 +1,4 @@
-import {getSessionStorageToken} from "../../services/manageConnection";
-
-export default function servicesRequest() {
+export default function exploreRequest() {
     return fetch("http://localhost:8080/api/services", {
         method: "GET",
     });

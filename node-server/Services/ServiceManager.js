@@ -4,6 +4,7 @@ const jnestedReplace = require('json-nested-replace');
 const WebHookService = require("../Class/Services/WebHookService");
 const SteamService = require("../Class/Services/SteamService");
 const DiscordService = require("../Class/Services/DiscordService");
+const TelegramService = require("../Class/Services/TelegramService");
 
 class ServiceManager {
     static services = [
@@ -11,7 +12,8 @@ class ServiceManager {
         CalendarService,
         WebHookService,
         SteamService,
-        DiscordService
+        DiscordService,
+        TelegramService
     ];
 
     static getService(uid) {

@@ -82,7 +82,33 @@ module.exports.logout = async (req, res, next) => {
 }
 
 module.exports.googleAuth = async (req, res, next) => {
-    console.log(req.query)
+    if (!req.body.credentials) {
+        res.json({'message': 'Username field should be supplied', 'field': 'credentials'}, 400);
+        return;
+    }
 
-    res.json({});
+    let email = req.body.credentials.email;
+    let username = req.body.credentials.given_name;
+    let created = false;
+
+
+    var user = await User.findOne({ where: { email: email } })
+    
+    if (!user) {
+        user = await User.build({ email });
+        await user.save();
+        created = true;
+    }
+
+    let token = randtoken.generate(40);
+    let authToken = await AuthToken.create({ token, userId: user.id });
+
+    res.json({
+        'created': created,
+        'token': authToken.token,
+        'user': {
+            'id': user.id,
+            'email': user.email
+        }
+    });
 }

@@ -1,13 +1,30 @@
 import React, {useState} from "react";
-import loginRequest from "./login"
+import { loginRequest, googleOauth } from "./login"
 import { setSessionStorageToken } from "../../services/manageConnection";
 import style from "./login.module.css";
 import {useNavigate} from "react-router-dom";
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import jwt_decode from "jwt-decode";
 
 
 function Content() {
     const [message, setMessage] = useState("");
     let navigate = useNavigate();
+
+    const responseGoogle = (response) => {
+        const userObject = jwt_decode(response.credential);
+        googleOauth(userObject).then(async (res) => {
+            const data = await res.json();
+            
+            if (!res.ok || data.token === undefined) {
+                const error = (data && data.message) || res.statusText;
+                setMessage("Error : " + error);
+                return;
+            }
+            setSessionStorageToken(data.token);
+            navigate("/connected");
+        })
+    }
 
     let handleSubmit = (event) => {
         event.preventDefault();
@@ -38,6 +55,24 @@ function Content() {
                 <h1>{message}</h1>
                 <button className={style.loginButton} type="submit">Log in</button>
             </form>
+            <div className="">
+                <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}`} >
+                    <GoogleLogin render={(renderProps) => (
+                        <button
+                        type="button"
+                        className=""
+                        onClick={renderProps.onClick}
+                        disabled={renderProps.disabled}
+                        >
+                         Sign in with google
+                        </button>
+                    )}
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy="single_host_origin"
+                    />
+                </GoogleOAuthProvider>
+          </div>
         </section>);
 }
 

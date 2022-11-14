@@ -41,11 +41,6 @@ server.use( session({
     cookie: { secure: false }
 }));
 
-server.get('/', passport.authenticate('google', {scope:['email', 'profile']}), (req,res)=>{});
-
-
-server.get('/callback', passport.authenticate('google', {scope: ['email', 'profile']}), (req,res)=>{ console.log(req.user); return res.json({}); });
-
 // Routes
 server.use( '/', require('./Controllers/routes') );
 
